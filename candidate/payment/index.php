@@ -1,5 +1,28 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
+<?php
+require '../partials/head.php';
+require '../partials/layout.php';
+require '../partials/database.php';
+
+$cc_records = $conn->prepare('SELECT *
+                            FROM payment_methods
+                            join credit_cards on cc_payment_method_id = payment_method_id
+                            where payment_method_user_id = :payment_method_user_id
+                            ');
+
+$user_id = $_SESSION['user_id'];
+$cc_records->bindParam(':payment_method_user_id', $user_id);
+$cc_records->execute();
+
+$pap_records = $conn->prepare('SELECT *
+                            FROM payment_methods
+                            join paps on pap_payment_method_id = payment_method_id
+                            where payment_method_user_id = :payment_method_user_id
+                            ');
+
+$user_id = $_SESSION['user_id'];
+$pap_records->bindParam(':payment_method_user_id', $user_id);
+$pap_records->execute();
+?>
 
 <div class="container">
     <h1>
@@ -19,35 +42,81 @@
         </div>
 
     </div>
+    <div class="row mb-4">
+        <div class="col-4">
+            <a href="./new-pap.php" class="btn btn-info btn-block">Pre-authorized Payment</a>
+        </div>
+        <div class="col-4">
+            <a href="./new-credit.php" class="btn btn-primary btn-block">Credit Payment</a>
+        </div>
+        <div class="col-4">
+            <a href="./manual.php" class="btn btn-dark btn-block">Manual Payment</a>
+        </div>
+    </div>
+    <h3>Credit Cards</h3>
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Holder Name</th>
                 <th scope="col">Card Number</th>
-                <th scope="col">Method</th>
+                <th scope="col">Type</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
+            <?php
+            $row_count = 1;
+            while ($row = $cc_records->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+            ?>
+                <tr>
+                    <th scope="row"> <?= $row_count ?> </th>
+                    <td><?= $row['cc_holder_name'] ?></td>
+                    <td><?= $row['cc_number'] ?></td>
+                    <td><?= $row['cc_type'] ?></td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="#">Set Default</a>
+                        <a href="./edit-credit.php?id=<?= $row['payment_method_id'] ?>" class="btn btn-outline-warning">Edit</a>
+                        <form action="./delete.php" method="post">
+                            <input type="hidden" name="id" value="<?= $row['payment_method_id'] ?>">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php
+                $row_count++;
+            } ?>
+        </tbody>
+    </table>
+    <h3>Pre-Authorized Payments</h3>
+    <table class="table">
+        <thead>
             <tr>
-                <th scope="row">1</th>
-                <td>Mark Something</td>
-                <td>123456789</td>
-                <td>Chequing</td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
+                <th scope="col">#</th>
+                <th scope="col">Account</th>
+                <th scope="col">Action</th>
             </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark Something</td>
-                <td>123456789</td>
-                <td>Credit</td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $row_count = 1;
+            while ($row = $pap_records->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+            ?>
+                <tr>
+                    <th scope="row"> <?= $row_count ?> </th>
+                    <td><?= $row['pap_transit_number'] . '-' . $row['pap_institution_number'] . '-' . $row['pap_account_number'] ?></td>
+                    <td>
+                        <button class="btn btn-outline-primary">Set Default</button>
+                        <a href="./edit-pap.php?id=<?= $row['payment_method_id'] ?>" class="btn btn-outline-warning">Edit</a>
+                        <form action="./delete.php" method="post">
+                            <input type="hidden" name="id" value="<?= $row['payment_method_id'] ?>">
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php
+                $row_count++;
+            } ?>
         </tbody>
     </table>
 
