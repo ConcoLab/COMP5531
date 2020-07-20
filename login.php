@@ -1,13 +1,13 @@
 <?php
 
-session_start();
-
 if (isset($_SESSION['user_id'])) {
   header('Location: candidate/jobs');
 }
 $message = '';
 
-require 'database.php';
+require './partials/database.php';
+require './partials/head.php';
+require './partials/layout.php';
 
 if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
   $records = $conn->prepare('SELECT user_id, user_email, user_password, user_username FROM users WHERE user_email = :user_email OR user_username = :user_username');
@@ -21,6 +21,26 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
   if (count($results) > 0 && $_POST['password'] == $results['user_password']) {
     $_SESSION['user_id'] = $results['user_id'];
     $_SESSION['username'] = $results['user_username'];
+
+    $employer = $conn->prepare('SELECT COUNT(*) FROM employers WHERE employer_id = :employer_id');
+    $employer->bindParam(':employer_id', $_SESSION['user_id']);
+    if ($employer->execute() && $employer->fetchColumn() > 0) {
+      $_SESSION['is_employer'] = true;
+    }
+
+    $candidate = $conn->prepare('SELECT COUNT(*) FROM candidates WHERE candidate_id = :candidate_id');
+    $candidate->bindParam(':candidate_id', $_SESSION['user_id']);
+    if ($candidate->execute() && $candidate->fetchColumn() > 0) {
+      $_SESSION['is_candidate'] = true;
+    }
+
+
+    $admin = $conn->prepare('SELECT COUNT(*) FROM admins WHERE admin_id = :admin_id');
+    $admin->bindParam(':admin_id', $_SESSION['user_id']);
+    if ($admin->execute() && $admin->fetchColumn() > 0) {
+      $_SESSION['is_admin'] = true;
+    }
+
     header("Location: candidate/jobs");
   } else {
     $message = 'Sorry, those credentials do not match';

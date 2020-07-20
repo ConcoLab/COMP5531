@@ -1,10 +1,24 @@
 <?php require '../partials/head.php' ?>
 <?php require '../partials/layout.php' ?>
+<?php require '../partials/database.php' ?>
+
+<?php
+$jobs_records = $conn->prepare('SELECT *
+FROM jobs
+JOIN employers ON job_employer_id = employer_id
+where job_status = :job_status
+');
+
+$job_status = 'Active';
+$jobs_records->bindParam(':job_status', $job_status);
+$jobs_records->execute();
+?>
 
 <div class="container">
     <h1>
         Jobs
     </h1>
+
     <div class="card mb-5">
         <div class="card-body">
             <h5 class="card-title">Search</h5>
@@ -39,21 +53,36 @@
             </form>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header">
-            <h2>
-                <strong>
-                    Company Name
-                </strong>
-            </h2>
+    <?php
+    $row_count = 1;
+    while ($row = $jobs_records->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+    ?>
+        <div class="card mb-5">
+            <div class="card-header">
+                <h2>
+                    <strong>
+                        <?= $row['job_title'] ?>
+                    </strong>
+                    at
+                    <strong>
+                        <?= $row['employer_name'] ?>
+                    </strong>
+                </h2>
 
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><?= $row['job_type'] ?></h5>
+                <h5 class="card-title">Number of Available Positions: <?= $row['job_number_of_positions'] ?></h5>
+                <p class="card-text"><?= $row['job_description'] ?></p>
+                <form method="POST" action="./apply.php">
+                    <input name="jobId" type="hidden" value="<?= $row['job_id'] ?>">
+                    <button class="btn btn-primary btn-block" type="submit">Apply</button>
+                </form>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Job Title</h5>
-            <p class="card-text">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eos, quia, delectus unde est rerum hic iure dicta soluta cumque veniam voluptatum, tenetur dignissimos. Reprehenderit veritatis distinctio sit a tenetur!</p>
-            <a href="#" class="btn btn-primary">Apply</a>
-        </div>
-    </div>
+
+    <?php } ?>
+
 </div>
 
 

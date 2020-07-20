@@ -1,12 +1,12 @@
 <?php
 
-session_start();
-
 if (isset($_SESSION['user_id'])) {
   header('Location: ./index.php');
 }
 
-require 'database.php';
+require './partials/database.php';
+require './partials/head.php';
+require './partials/layout.php';
 
 $message = '';
 
