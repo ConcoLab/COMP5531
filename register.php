@@ -1,6 +1,6 @@
 <?php
 
-require './partials/database.php';
+require_once './partials/database.php';
 
 if (isset($_SESSION['user_id'])) {
   header('Location: .');
@@ -41,7 +41,7 @@ if (
 ?>
 
 
-<?php require './partials/head-public.php' ?>
+<?php require_once './partials/head-public.php' ?>
 
 <div class="container">
   <h1>
@@ -79,4 +79,4 @@ if (
   </form>
 </div>
 
-<?php require './partials/foot.php' ?>
+<?php require_once './partials/foot.php' ?>

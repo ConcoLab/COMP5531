@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -38,7 +38,7 @@ if (!empty($_POST['transit']) && !empty($_POST['institution']) && !empty($_POST[
 }
 ?>
 
-<?php require '../../partials/head-candidate.php' ?>
+<?php require_once '../../partials/head-candidate.php' ?>
 
 
 <div class="container">
@@ -76,4 +76,4 @@ if (!empty($_POST['transit']) && !empty($_POST['institution']) && !empty($_POST[
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

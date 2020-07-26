@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<?php require $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/head-candidate.php' ?>
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>
@@ -57,4 +57,4 @@
 </div>
 
 
-<?php require $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/foot.php' ?>
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/foot.php' ?>

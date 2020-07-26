@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 <?php
 if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
@@ -40,7 +40,7 @@ if (!empty($_POST['title'])
 ?>
 
 
-<?php require '../../partials/head-employer.php' ?>
+<?php require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
     <h1>
@@ -88,4 +88,4 @@ if (!empty($_POST['title'])
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

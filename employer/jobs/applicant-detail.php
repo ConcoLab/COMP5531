@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 <?php
 if (!empty($_GET['candidateId']) && !empty($_GET['jobId'])) {
@@ -34,7 +34,7 @@ if (!empty($_GET['candidateId']) && !empty($_GET['jobId'])) {
     }
 }
 ?>
-<?php require '../../partials/head-employer.php' ?>
+<?php require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
     <div class="row">
@@ -88,4 +88,4 @@ if (!empty($_GET['candidateId']) && !empty($_GET['jobId'])) {
     </div>
 </div>
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

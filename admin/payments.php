@@ -1,4 +1,4 @@
-<?php require '../partials/database.php' ?>
+<?php require_once '../partials/database.php' ?>
 
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -10,8 +10,8 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
 ?>
 
 
-<?php require '../partials/database.php' ?>
-<?php require '../partials/head-admin.php' ?>
+<?php require_once '../partials/database.php' ?>
+<?php require_once '../partials/head-admin.php' ?>
 
 <div class="container">
     <h1>
@@ -21,4 +21,4 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
 </div>
 
 
-<?php require '../partials/foot.php' ?>
+<?php require_once '../partials/foot.php' ?>

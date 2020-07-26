@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 <?php
 if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
@@ -26,7 +26,7 @@ $job_records->execute();
 
 ?>
 
-<?php require '../../partials/head-candidate.php' ?>
+<?php require_once '../../partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>
@@ -120,4 +120,4 @@ $job_records->execute();
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

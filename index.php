@@ -1,6 +1,6 @@
 <?php
-require './partials/database.php';
-require './partials/head-public.php';
+require_once './partials/database.php';
+require_once './partials/head-public.php';
 echo $_SESSION['user_id'];
 echo isset($_SESSION['user_id']);
 echo (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']);
@@ -91,4 +91,4 @@ echo (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']);
 </div>
 
 
-<?php require './partials/foot.php' ?>
+<?php require_once './partials/foot.php' ?>

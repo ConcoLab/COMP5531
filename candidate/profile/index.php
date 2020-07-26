@@ -1,5 +1,5 @@
 
-<?php require '../../partials/head-candidate.php' ?>
+<?php require_once '../../partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>
@@ -84,4 +84,4 @@
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

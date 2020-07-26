@@ -1,5 +1,5 @@
 <?php
-require './partials/database.php';
+require_once './partials/database.php';
 
 if (isset($_SESSION['user_id'])) {
   header("Location: .");
@@ -49,7 +49,7 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
 ?>
 
 <?php
-require './partials/head-public.php';
+require_once './partials/head-public.php';
 ?>
 
 <div class="container">
@@ -73,4 +73,4 @@ require './partials/head-public.php';
 </div>
 
 
-<?php require './partials/foot.php' ?>
+<?php require_once './partials/foot.php' ?>

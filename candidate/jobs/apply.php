@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -39,6 +39,6 @@ echo date('Y-m-d');
 echo $_POST['jobId'];
 
 ?>
-<?php require '../../partials/head-candidate.php' ?>
+<?php require_once '../../partials/head-candidate.php' ?>
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

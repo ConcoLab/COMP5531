@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 
 <?php
@@ -33,7 +33,7 @@ if (!empty($_GET['id'])) {
 
 ?>
 
-<?php require '../../partials/head-employer.php' ?>
+<?php require_once '../../partials/head-employer.php' ?>
 
 
 <div class="container">
@@ -119,4 +119,4 @@ if (!empty($_GET['id'])) {
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

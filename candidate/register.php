@@ -1,6 +1,6 @@
 <?php
 
-// require 'database.php';
+// require_once 'database.php';
 
 $message = '';
 
@@ -19,7 +19,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 }
 ?>
 
-<?php require $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/head-candidate.php' ?>
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>
@@ -43,4 +43,4 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 </div>
 
 
-<?php require 'partials/foot.php' ?>
+<?php require_once 'partials/foot.php' ?>

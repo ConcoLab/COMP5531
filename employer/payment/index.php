@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 <?php
 $cc_records = $conn->prepare('SELECT *
@@ -22,7 +22,7 @@ $pap_records->bindParam(':payment_method_user_id', $user_id);
 $pap_records->execute();
 ?>
 
-<?php require '../../partials/head-employer.php' ?>
+<?php require_once '../../partials/head-employer.php' ?>
 
 
 <div class="container">
@@ -134,4 +134,4 @@ $pap_records->execute();
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

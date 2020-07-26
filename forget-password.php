@@ -2,7 +2,7 @@
   if (isset($_SESSION['user_id'])) {
     header('Location: /php-login');
   }
-  require 'database.php';
+  require_once 'database.php';
 
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $records = $conn->prepare('SELECT id, email, password FROM gxc55311.z_users WHERE email = :email');
@@ -22,8 +22,8 @@
 
 ?>
 
-<?php require 'partials/head.php' ?>
-<?php require 'partials/layout.php' ?>
+<?php require_once 'partials/head.php' ?>
+<?php require_once 'partials/layout.php' ?>
 
 <div class="container">
 <h1>
@@ -39,4 +39,4 @@
 </div>
 
 
-<?php require 'partials/foot.php' ?>
+<?php require_once 'partials/foot.php' ?>

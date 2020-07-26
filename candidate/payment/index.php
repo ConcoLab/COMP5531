@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -33,7 +33,7 @@ $pap_records->bindParam(':payment_method_user_id', $user_id);
 $pap_records->execute();
 ?>
 
-<?php require '../../partials/head-candidate.php' ?>
+<?php require_once '../../partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>
@@ -144,4 +144,4 @@ $pap_records->execute();
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

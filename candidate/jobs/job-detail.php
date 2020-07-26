@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 <?php
 if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
@@ -27,7 +27,7 @@ if (!empty($_GET['jobId'])) {
 }
 
 ?>
-<?php require '../../partials/head-candidate.php' ?>
+<?php require_once '../../partials/head-candidate.php' ?>
 
 <div class="container">
     <div class="card mb-5">
@@ -59,4 +59,4 @@ if (!empty($_GET['jobId'])) {
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

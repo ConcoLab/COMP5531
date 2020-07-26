@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -20,7 +20,7 @@ $user_id = $_SESSION['user_id'];
 $jobs_records->bindParam(':job_employer_id', $user_id);
 $jobs_records->execute();
 ?>
-<?php require '../../partials/head-employer.php' ?>
+<?php require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
     <h1>
@@ -164,4 +164,4 @@ $jobs_records->execute();
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

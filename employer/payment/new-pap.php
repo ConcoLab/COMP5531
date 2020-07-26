@@ -1,4 +1,4 @@
-<?php require '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php' ?>
 
 <?php
 $message = '';
@@ -28,7 +28,7 @@ if (!empty($_POST['transit']) && !empty($_POST['institution']) && !empty($_POST[
 ?>
 
 
-<?php require '../../partials/head-employer.php' ?>
+<?php require_once '../../partials/head-employer.php' ?>
 
 
 <div class="container">
@@ -66,4 +66,4 @@ if (!empty($_POST['transit']) && !empty($_POST['institution']) && !empty($_POST[
 </div>
 
 
-<?php require '../../partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>
