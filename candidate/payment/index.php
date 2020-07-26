@@ -14,8 +14,8 @@ $cc_records->bindParam(':payment_method_user_id', $user_id);
 $cc_records->execute();
 
 $pap_records = $conn->prepare('SELECT *
-                            FROM payment_methods
-                            join paps on pap_payment_method_id = payment_method_id
+                            FROM z_payment_methods
+                            join z_paps on pap_payment_method_id = payment_method_id
                             where payment_method_user_id = :payment_method_user_id
                             ');
 

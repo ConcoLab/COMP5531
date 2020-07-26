@@ -10,7 +10,7 @@ require './partials/head.php';
 require './partials/layout.php';
 
 if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
-  $records = $conn->prepare('SELECT z_user_id, user_email, user_password, user_username FROM users WHERE user_email = :user_email OR user_username = :user_username');
+  $records = $conn->prepare('SELECT user_id, user_email, user_password, user_username FROM z_users WHERE user_email = :user_email OR user_username = :user_username');
   $records->bindParam(':user_email', $_POST['emailOrUsername']);
   $records->bindParam(':user_username', $_POST['emailOrUsername']);
   $records->execute();

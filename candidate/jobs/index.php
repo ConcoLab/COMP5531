@@ -4,7 +4,7 @@
 
 <?php
 $jobs_records = $conn->prepare('SELECT *
-FROM jobs
+FROM z_jobs
 JOIN z_employers ON job_employer_id = employer_id
 where job_status = :job_status
 ');

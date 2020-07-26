@@ -6,7 +6,7 @@ require '../partials/database.php';
 $message = '';
 if (!empty($_GET['id']) || !empty($_POST['id'])) {
     $pap_records = $conn->prepare('SELECT *
-                            z_FROM credit_cards
+                            FROM z_credit_cards
                             where cc_payment_method_id = :cc_payment_method_id
                             ');
 
