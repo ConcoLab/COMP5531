@@ -1,7 +1,4 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
-
 <?php
 $jobs_records = $conn->prepare('SELECT *
 FROM z_jobs
@@ -13,6 +10,8 @@ $job_status = 'Active';
 $jobs_records->bindParam(':job_status', $job_status);
 $jobs_records->execute();
 ?>
+
+<?php require '../partials/head.php' ?>
 
 <div class="container">
     <h1>

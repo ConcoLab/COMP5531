@@ -2,7 +2,6 @@
 
 ?>
 <?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 
 <div class="container">
     <h1>

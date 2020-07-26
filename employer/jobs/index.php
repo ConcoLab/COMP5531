@@ -1,5 +1,3 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
 
 
@@ -13,6 +11,7 @@ $user_id = $_SESSION['user_id'];
 $jobs_records->bindParam(':job_employer_id', $user_id);
 $jobs_records->execute();
 ?>
+<?php require '../partials/head.php' ?>
 
 <div class="container">
     <h1>

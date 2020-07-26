@@ -1,7 +1,4 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
-
 <?php
 if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
     $stmt = $conn->prepare('DELETE FROM z_applications
@@ -17,5 +14,6 @@ if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
     }
 }
 ?>
+<?php require '../partials/head.php' ?>
 
 <?php require '../partials/foot.php' ?>

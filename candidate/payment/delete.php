@@ -1,6 +1,4 @@
 <?php
-require '../partials/head.php';
-require '../partials/layout.php';
 require '../partials/database.php';
 
 if(!empty($_POST['id'])){

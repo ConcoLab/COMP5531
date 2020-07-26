@@ -1,6 +1,4 @@
 <?php
-require '../partials/head.php';
-require '../partials/layout.php';
 require '../partials/database.php';
 
 $cc_records = $conn->prepare('SELECT *
@@ -23,6 +21,9 @@ $user_id = $_SESSION['user_id'];
 $pap_records->bindParam(':payment_method_user_id', $user_id);
 $pap_records->execute();
 ?>
+
+<?php require '../partials/head.php' ?>
+
 
 <div class="container">
     <h1>

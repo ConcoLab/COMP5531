@@ -20,7 +20,6 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 ?>
 
 <?php require 'partials/head.php' ?>
-<?php require 'partials/layout.php' ?>
 
 <div class="container">
     <h1>

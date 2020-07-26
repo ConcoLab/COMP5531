@@ -1,7 +1,7 @@
 <?php
-require './partials/head.php';
-require './partials/layout.php';
 require './partials/database.php';
+require './partials/head.php';
+
 ?>
 <div class="container">
   <div class="row">

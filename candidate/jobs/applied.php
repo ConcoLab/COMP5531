@@ -1,8 +1,4 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
-
-
 <?php
 
 $job_records = $conn->prepare('SELECT *
@@ -18,6 +14,8 @@ $job_records->execute();
 
 
 ?>
+
+<?php require '../partials/head.php' ?>
 
 <div class="container">
     <h1>

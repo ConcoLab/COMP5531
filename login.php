@@ -1,7 +1,5 @@
 <?php
-require './partials/head.php';
 require './partials/database.php';
-require './partials/layout.php';
 
 if (isset($_SESSION['user_id'])) {
   header('Location: candidate/jobs');
@@ -50,8 +48,10 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
 
 ?>
 
+<?php
+require './partials/head.php';
+?>
 
-<?php require 'candidate/partials/head.php' ?>
 <div class="container">
   <h1>
     Login

@@ -1,5 +1,3 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
 
 <?php
@@ -36,6 +34,7 @@ if (!empty($_GET['candidateId']) && !empty($_GET['jobId'])) {
     }
 }
 ?>
+<?php require '../partials/head.php' ?>
 
 <div class="container">
     <div class="row">

@@ -1,4 +1,3 @@
-<?php require '../partials/head.php' ?>
 <?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
 
@@ -30,6 +29,7 @@ echo date('Y-m-d');
 echo $_POST['jobId'];
 
 ?>
+<?php require '../partials/head.php' ?>
 
 <?php require '../partials/foot.php' ?>
 

@@ -1,5 +1,3 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
 
 
@@ -34,6 +32,9 @@ if (!empty($_GET['id'])) {
 
 
 ?>
+
+<?php require '../partials/head.php' ?>
+
 
 <div class="container">
     <h1>

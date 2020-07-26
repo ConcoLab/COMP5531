@@ -1,12 +1,11 @@
 <?php
 
+require './partials/database.php';
+
 if (isset($_SESSION['user_id'])) {
   header('Location: ./index.php');
 }
 
-require './partials/database.php';
-require './partials/head.php';
-require './partials/layout.php';
 
 $message = '';
 
@@ -47,7 +46,7 @@ if (
 ?>
 
 
-<?php require 'candidate/partials/head.php' ?>
+<?php require 'partials/head.php' ?>
 
 <div class="container">
   <h1>
