@@ -1,5 +1,6 @@
+<?php require '../../partials/database.php' ?>
+
 <?php
-require '../partials/database.php';
 $message = '';
 
 if (!empty($_GET['id']) || !empty($_POST['id'])) {
@@ -42,7 +43,7 @@ if (
 ?>
 
 
-<?php require '../partials/head.php' ?>
+<?php require '../../partials/head-employer.php' ?>
 
 
 <div class="container">
@@ -83,4 +84,4 @@ if (
 </div>
 
 
-<?php require '../partials/foot.php' ?>
+<?php require '../../partials/foot.php' ?>

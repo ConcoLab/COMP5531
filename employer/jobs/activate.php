@@ -1,4 +1,4 @@
-<?php require '../partials/database.php' ?>
+<?php require '../../partials/database.php' ?>
 
 <?php
 $job_status = 'Active';
@@ -14,7 +14,3 @@ if (!empty($_POST['id'])) {
         $message = 'Sorry, entered values are not correct.';
     }
 }
-?>
-<?php require '../partials/head.php' ?>
-
-<?php require '../partials/foot.php' ?>

@@ -1,13 +1,16 @@
 <?php
 session_start();
-$server = 'gxc5531.encs.concordia.ca';
-$username = 'gxc55311';
+$server = 'localhost:3306';
+$username = 'root';
 $password = '';
 $database = 'gxc55311';
 
 try {
-  $conn = new PDO("mysql:host=$server;port=3306;dbname=$database;", $username, $password);
+  $conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
 } catch (PDOException $e) {
   die('Connection Failed: ' . $e->getMessage());
 }
+
+
+
 ?>

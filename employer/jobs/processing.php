@@ -1,5 +1,14 @@
-<?php require '../partials/database.php' ?>
+<?php require '../../partials/database.php' ?>
+<?php
+if (!isset($_SESSION['user_id'])) {
+  header('Location: ../../login.php');
+}
 
+if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
+  header('Location: /gxc55311/.');
+}
+
+?>
 <?php
 $application_status = 'Processing';
 if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
@@ -16,7 +25,3 @@ if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
         $message = 'Sorry, entered values are not correct.';
     }
 }
-?>
-<?php require '../partials/head.php' ?>
-
-<?php require '../partials/foot.php' ?>

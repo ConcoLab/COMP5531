@@ -19,7 +19,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 }
 ?>
 
-<?php require 'partials/head.php' ?>
+<?php require $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>

@@ -1,4 +1,4 @@
-<?php require '../partials/database.php' ?>
+<?php require '../../partials/database.php' ?>
 
 
 <?php
@@ -12,7 +12,7 @@ $category_records->bindParam(':job_category_employer_id', $user_id);
 $category_records->execute();
 ?>
 
-<?php require '../partials/head.php' ?>
+<?php require '../../partials/head-employer.php' ?>
 
 <div class="container">
     <h1>
@@ -63,4 +63,4 @@ $category_records->execute();
 </div>
 
 
-<?php require '../partials/foot.php' ?>
+<?php require '../../partials/foot.php' ?>

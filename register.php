@@ -3,7 +3,7 @@
 require './partials/database.php';
 
 if (isset($_SESSION['user_id'])) {
-  header('Location: ./index.php');
+  header('Location: .');
 }
 
 
@@ -33,20 +33,15 @@ if (
 
   if ($stmt->execute()) {
     $message = 'Successfully created new user';
-    header('Location: /login.php');
+    header('Location: '.$_SERVER["DOCUMENT_ROOT"].'/comp5531/login.php');
   } else {
     $message = 'Sorry there must have been an issue creating your account';
   }
-  echo  $_POST['username'];
-  echo  $_POST['email'];
-  echo  $_POST['phone'];
-  echo  $_POST['address'];
-  echo  $_POST['password'];
 }
 ?>
 
 
-<?php require 'partials/head.php' ?>
+<?php require './partials/head-public.php' ?>
 
 <div class="container">
   <h1>
@@ -84,4 +79,4 @@ if (
   </form>
 </div>
 
-<?php require 'candidate/partials/foot.php' ?>
+<?php require './partials/foot.php' ?>

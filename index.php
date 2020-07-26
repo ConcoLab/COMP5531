@@ -1,8 +1,11 @@
 <?php
 require './partials/database.php';
-require './partials/head.php';
-
+require './partials/head-public.php';
+echo $_SESSION['user_id'];
+echo isset($_SESSION['user_id']);
+echo (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']);
 ?>
+
 <div class="container">
   <div class="row">
     <?php if (isset($_SESSION['user_id'])) { ?>

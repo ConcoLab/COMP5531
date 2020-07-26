@@ -1,4 +1,14 @@
-<?php require '../partials/database.php' ?>
+<?php require '../../partials/database.php' ?>
+<?php
+if (!isset($_SESSION['user_id'])) {
+  header('Location: ../../login.php');
+}
+
+if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
+  header('Location: /gxc55311/.');
+}
+?>
+
 <?php
 if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
     $stmt = $conn->prepare('DELETE FROM gxc55311.z_applications
@@ -14,6 +24,6 @@ if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
     }
 }
 ?>
-<?php require '../partials/head.php' ?>
+<?php require '../../partials/head-candidate.php' ?>
 
-<?php require '../partials/foot.php' ?>
+<?php require '../../partials/foot.php' ?>

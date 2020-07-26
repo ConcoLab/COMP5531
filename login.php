@@ -2,7 +2,7 @@
 require './partials/database.php';
 
 if (isset($_SESSION['user_id'])) {
-  header('Location: candidate/jobs');
+  header("Location: .");
 }
 $message = '';
 
@@ -39,17 +39,17 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
     if ($admin->execute() && $admin->fetchColumn() > 0) {
       $_SESSION['is_admin'] = true;
     }
-
-    header("Location: candidate/jobs");
+    header("Location: .");
   } else {
     $message = 'Sorry, those credentials do not match';
   }
+
 }
 
 ?>
 
 <?php
-require './partials/head.php';
+require './partials/head-public.php';
 ?>
 
 <div class="container">
@@ -73,4 +73,4 @@ require './partials/head.php';
 </div>
 
 
-<?php require 'candidate/partials/foot.php' ?>
+<?php require './partials/foot.php' ?>

@@ -1,6 +1,15 @@
+<?php require '../../partials/database.php' ?>
 <?php
-require '../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+  header('Location: ../../login.php');
+}
 
+if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
+  header('Location: /gxc55311/.');
+}
+
+?>
+<?php
 $message = '';
 $job_status = 'Active';
 
@@ -31,7 +40,7 @@ if (!empty($_POST['title'])
 ?>
 
 
-<?php require '../partials/head.php' ?>
+<?php require '../../partials/head-employer.php' ?>
 
 <div class="container">
     <h1>
@@ -79,4 +88,4 @@ if (!empty($_POST['title'])
 </div>
 
 
-<?php require '../partials/foot.php' ?>
+<?php require '../../partials/foot.php' ?>

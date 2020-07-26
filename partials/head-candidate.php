@@ -1,15 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
-}
-
-if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /gxc55311/.');
-}
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -22,8 +10,9 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-info mb-4">
-  <a class="navbar-brand" href="#">Employer Menu</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
+  <a class="navbar-brand" href="#">Candidates Menu</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,16 +20,13 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../jobs/new.php">New</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="../jobs">Jobs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../membership">Membership</a>
+        <a class="nav-link" href="../jobs/applied.php">Applied</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../payment">Payment</a>
+        <a class="nav-link" href="../membership">Membership</a>
       </li>
     </ul>
 
@@ -50,7 +36,7 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
           <a class="nav-link" href="../profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled text-warning" href="#" tabindex="-1" aria-disabled="true">Gold Member</a>
+        <a class="nav-link disabled text-warning" href="#" tabindex="-1" aria-disabled="true">Gold Member</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

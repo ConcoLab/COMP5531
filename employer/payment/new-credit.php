@@ -1,6 +1,6 @@
-<?php
-require '../partials/database.php';
+<?php require '../../partials/database.php' ?>
 
+<?php
 $message = '';
 
 
@@ -39,7 +39,7 @@ if (!empty($_POST['holderName'])
 ?>
 
 
-<?php require '../partials/head.php' ?>
+<?php require '../../partials/head-employer.php' ?>
 
 <div class="container">
     <h1>
@@ -85,4 +85,4 @@ if (!empty($_POST['holderName'])
 </div>
 
 
-<?php require '../partials/foot.php' ?>
+<?php require '../../partials/foot.php' ?>
