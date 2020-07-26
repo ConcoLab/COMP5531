@@ -6,7 +6,7 @@ $message = '';
 
 if (!empty($_GET['id']) || !empty($_POST['id'])) {
     $pap_records = $conn->prepare('SELECT *
-                            FROM paps
+                            FROM z_paps
                             where pap_payment_method_id = :pap_payment_method_id
                             ');
 
@@ -26,7 +26,7 @@ if (
     && !empty($_POST['account'])
     && !empty($_POST['id'])
 ) {
-    $stmt = $conn->prepare('UPDATE paps SET pap_transit_number = :pap_transit_number
+    $stmt = $conn->prepare('UPDATE z_paps SET pap_transit_number = :pap_transit_number
                                 , pap_institution_number = :pap_institution_number
                                 , pap_account_number = :pap_account_number
                             WHERE pap_payment_method_id = :pap_payment_method_id');

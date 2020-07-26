@@ -5,7 +5,7 @@
 <?php
 $application_status = 'CandidateRejected';
 if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
-    $stmt = $conn->prepare('UPDATE applications SET application_status = :application_status
+    $stmt = $conn->prepare('UPDATE z_applications SET application_status = :application_status
                             WHERE application_job_id = :application_job_id
                             AND application_candidate_id = :application_candidate_id');
     $stmt->bindParam(':application_job_id', $_POST['jobId']);

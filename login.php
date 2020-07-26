@@ -10,7 +10,7 @@ require './partials/head.php';
 require './partials/layout.php';
 
 if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
-  $records = $conn->prepare('SELECT user_id, user_email, user_password, user_username FROM users WHERE user_email = :user_email OR user_username = :user_username');
+  $records = $conn->prepare('SELECT z_user_id, user_email, user_password, user_username FROM users WHERE user_email = :user_email OR user_username = :user_username');
   $records->bindParam(':user_email', $_POST['emailOrUsername']);
   $records->bindParam(':user_username', $_POST['emailOrUsername']);
   $records->execute();
@@ -22,20 +22,20 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
     $_SESSION['user_id'] = $results['user_id'];
     $_SESSION['username'] = $results['user_username'];
 
-    $employer = $conn->prepare('SELECT COUNT(*) FROM employers WHERE employer_id = :employer_id');
+    $employer = $conn->prepare('SELECT COUNT(*) FROM z_employers WHERE employer_id = :employer_id');
     $employer->bindParam(':employer_id', $_SESSION['user_id']);
     if ($employer->execute() && $employer->fetchColumn() > 0) {
       $_SESSION['is_employer'] = true;
     }
 
-    $candidate = $conn->prepare('SELECT COUNT(*) FROM candidates WHERE candidate_id = :candidate_id');
+    $candidate = $conn->prepare('SELECT COUNT(*) FROM z_candidates WHERE candidate_id = :candidate_id');
     $candidate->bindParam(':candidate_id', $_SESSION['user_id']);
     if ($candidate->execute() && $candidate->fetchColumn() > 0) {
       $_SESSION['is_candidate'] = true;
     }
 
 
-    $admin = $conn->prepare('SELECT COUNT(*) FROM admins WHERE admin_id = :admin_id');
+    $admin = $conn->prepare('SELECT COUNT(*) FROM z_admins WHERE admin_id = :admin_id');
     $admin->bindParam(':admin_id', $_SESSION['user_id']);
     if ($admin->execute() && $admin->fetchColumn() > 0) {
       $_SESSION['is_admin'] = true;

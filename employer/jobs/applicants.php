@@ -10,7 +10,7 @@
 if (!empty($_GET['id'])) {
 
     $job_record = $conn->prepare('SELECT *
-    FROM jobs
+    FROM z_jobs
     where job_id = :job_id
     ');
     $job_id = $_GET['id'];
@@ -21,8 +21,8 @@ if (!empty($_GET['id'])) {
 
 
     $application_records = $conn->prepare('SELECT *
-    FROM applications
-    JOIN candidates ON application_candidate_id = candidate_id
+    FROM z_applications
+    JOIN z_candidates ON application_candidate_id = candidate_id
     where application_job_id = :job_id
     ');
     $job_id = $_GET['id'];

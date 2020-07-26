@@ -4,7 +4,7 @@
 
 <?php
 if (!empty($_POST['id'])) {
-    $stmt = $conn->prepare('DELETE FROM jobs
+    $stmt = $conn->prepare('DELETE FROM z_jobs
                             WHERE job_id = :job_id');
     $stmt->bindParam(':job_id', $_POST['id']);
 

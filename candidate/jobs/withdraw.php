@@ -4,7 +4,7 @@
 
 <?php
 if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
-    $stmt = $conn->prepare('DELETE FROM applications
+    $stmt = $conn->prepare('DELETE FROM z_applications
                             WHERE application_job_id = :application_job_id
                             AND application_candidate_id = :application_candidate_id');
     $stmt->bindParam(':application_job_id', $_POST['jobId']);

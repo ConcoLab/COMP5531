@@ -5,7 +5,7 @@
 
 <?php
 $jobs_records = $conn->prepare('SELECT *
-FROM jobs
+FROM z_jobs
 where job_employer_id = :job_employer_id
 ');
 

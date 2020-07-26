@@ -5,7 +5,7 @@
 <?php
 $job_status = 'Active';
 if (!empty($_POST['id'])) {
-    $stmt = $conn->prepare('UPDATE jobs SET job_status = :job_status
+    $stmt = $conn->prepare('UPDATE z_jobs SET job_status = :job_status
                             WHERE job_id = :job_id');
     $stmt->bindParam(':job_id', $_POST['id']);
     $stmt->bindParam(':job_status', $job_status);

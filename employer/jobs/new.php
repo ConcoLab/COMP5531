@@ -12,7 +12,7 @@ if (!empty($_POST['title'])
 && !empty($_POST['type'])
 && !empty($_POST['description'])
 && !empty($_POST['positionNumbsers'])) {
-    $stmt = $conn->prepare('INSERT INTO jobs
+    $stmt = $conn->prepare('INSERT INTO z_jobs
     (job_title, job_location, job_type, job_description, job_status, job_number_of_positions, job_employer_id)
     VALUES(:job_title, :job_location, :job_type, :job_description, :job_status, :job_number_of_positions, :job_employer_id)');
     $stmt->bindParam(':job_title', $_POST['title']);

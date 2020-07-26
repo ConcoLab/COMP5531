@@ -4,8 +4,8 @@ require '../partials/layout.php';
 require '../partials/database.php';
 
 $cc_records = $conn->prepare('SELECT *
-                            FROM payment_methods
-                            join credit_cards on cc_payment_method_id = payment_method_id
+                            FROM z_payment_methods
+                            join z_credit_cards on cc_payment_method_id = payment_method_id
                             where payment_method_user_id = :payment_method_user_id
                             ');
 
