@@ -1,13 +1,14 @@
 <?php
+require './partials/head.php';
+require './partials/database.php';
+require './partials/layout.php';
 
 if (isset($_SESSION['user_id'])) {
   header('Location: candidate/jobs');
 }
 $message = '';
 
-require './partials/database.php';
-require './partials/head.php';
-require './partials/layout.php';
+
 
 if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
   $records = $conn->prepare('SELECT user_id, user_email, user_password, user_username FROM z_users WHERE user_email = :user_email OR user_username = :user_username');

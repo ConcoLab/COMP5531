@@ -1,15 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
-}
-
-if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: ../register.php');
-}
-
-?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-info mb-4">
   <a class="navbar-brand" href="#">Employer Menu</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

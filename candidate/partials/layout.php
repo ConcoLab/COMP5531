@@ -1,14 +1,4 @@
-<?php
-session_start();
 
-if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
-}
-if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
-  header('Location: ../register.php');
-}
-
-?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
   <a class="navbar-brand" href="/comp5531/candidate/jobs">Candidates Menu</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -38,7 +38,11 @@ if (
   } else {
     $message = 'Sorry there must have been an issue creating your account';
   }
-  $message = $_POST['username'];
+  echo  $_POST['username'];
+  echo  $_POST['email'];
+  echo  $_POST['phone'];
+  echo  $_POST['address'];
+  echo  $_POST['password'];
 }
 ?>
 
