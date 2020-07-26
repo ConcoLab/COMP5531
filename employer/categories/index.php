@@ -3,7 +3,7 @@
 
 <?php
 $category_records = $conn->prepare('SELECT *
-FROM z_job_categories
+FROM gxc55311.z_job_categories
 where job_category_employer_id = :job_category_employer_id
 ');
 

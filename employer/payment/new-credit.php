@@ -9,14 +9,14 @@ if (!empty($_POST['holderName'])
 && !empty($_POST['cardNumber'])
 && !empty($_POST['cvv'])
 && !empty($_POST['type'])) {
-    $stmt = $conn->prepare('INSERT INTO z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
+    $stmt = $conn->prepare('INSERT INTO gxc55311.z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
     $user_id = $_SESSION["user_id"];
     $stmt->bindParam(':payment_method_user_id', $user_id);
 
     if ($stmt->execute()) {
         $last_id = $conn->lastInsertId();
         echo $last_id;
-        $stmt = $conn->prepare('INSERT INTO z_credit_cards
+        $stmt = $conn->prepare('INSERT INTO gxc55311.z_credit_cards
         (cc_payment_method_id, cc_number, cc_type, cc_holder_name, cc_expiration_date, cc_cvv)
         VALUES(:cc_payment_method_id, :cc_number, :cc_type, :cc_holder_name, :cc_expiration_date, :cc_cvv)');
         $stmt->bindParam(':cc_payment_method_id', $last_id);

@@ -1,4 +1,4 @@
--- comp5531.z_users definition
+-- gxc55311.z_users definition
 
 CREATE TABLE `z_users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -13,7 +13,7 @@ CREATE TABLE `z_users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1006 DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_admins definition
+-- gxc55311.z_admins definition
 
 CREATE TABLE `z_admins` (
   `admin_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE `z_admins` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_candidates definition
+-- gxc55311.z_candidates definition
 
 CREATE TABLE `z_candidates` (
   `candidate_id` int(11) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `z_candidates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_employers definition
+-- gxc55311.z_employers definition
 
 CREATE TABLE `z_employers` (
   `employer_id` int(11) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `z_employers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_job_categories definition
+-- gxc55311.z_job_categories definition
 
 CREATE TABLE `z_job_categories` (
   `job_category_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -63,7 +63,7 @@ CREATE TABLE `z_job_categories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_jobs definition
+-- gxc55311.z_jobs definition
 
 CREATE TABLE `z_jobs` (
   `job_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -80,7 +80,7 @@ CREATE TABLE `z_jobs` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1013 DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_z_jobs_z_job_categories definition
+-- gxc55311.z_z_jobs_z_job_categories definition
 
 CREATE TABLE `z_z_jobs_z_job_categories` (
   `job_id` int(11) NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE `z_z_jobs_z_job_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_payment_methods definition
+-- gxc55311.z_payment_methods definition
 
 CREATE TABLE `z_payment_methods` (
   `payment_method_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -104,7 +104,7 @@ CREATE TABLE `z_payment_methods` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1036 DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_payments definition
+-- gxc55311.z_payments definition
 
 CREATE TABLE `z_payments` (
   `payment_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -117,7 +117,7 @@ CREATE TABLE `z_payments` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_applications definition
+-- gxc55311.z_applications definition
 
 CREATE TABLE `z_applications` (
   `application_candidate_id` int(11) NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE `z_applications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_credit_cards definition
+-- gxc55311.z_credit_cards definition
 
 CREATE TABLE `z_credit_cards` (
   `cc_payment_method_id` int(11) NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE `z_credit_cards` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- comp5531.z_paps definition
+-- gxc55311.z_paps definition
 
 CREATE TABLE `z_paps` (
   `pap_payment_method_id` int(11) NOT NULL,

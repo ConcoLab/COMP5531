@@ -1,11 +1,9 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
 
 <?php
 $application_status = 'Accepted';
 if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
-    $stmt = $conn->prepare('UPDATE z_applications SET application_status = :application_status
+    $stmt = $conn->prepare('UPDATE gxc55311.z_applications SET application_status = :application_status
                             WHERE application_job_id = :application_job_id
                             AND application_candidate_id = :application_candidate_id');
     $stmt->bindParam(':application_job_id', $_POST['jobId']);
@@ -19,5 +17,6 @@ if (!empty($_POST['candidateId']) && !empty($_POST['jobId'])) {
     }
 }
 ?>
+<?php require '../partials/head.php' ?>
 
 <?php require '../partials/foot.php' ?>

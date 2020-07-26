@@ -5,7 +5,7 @@
 $message = '';
 
 if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $sql = "INSERT INTO z_users (email, password) VALUES (:email, :password)";
+    $sql = "INSERT INTO gxc55311.z_users (email, password) VALUES (:email, :password)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);

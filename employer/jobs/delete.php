@@ -1,10 +1,8 @@
-<?php require '../partials/head.php' ?>
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
 
 <?php
 if (!empty($_POST['id'])) {
-    $stmt = $conn->prepare('DELETE FROM z_jobs
+    $stmt = $conn->prepare('DELETE FROM gxc55311.z_jobs
                             WHERE job_id = :job_id');
     $stmt->bindParam(':job_id', $_POST['id']);
 
@@ -15,5 +13,6 @@ if (!empty($_POST['id'])) {
     }
 }
 ?>
+<?php require '../partials/head.php' ?>
 
 <?php require '../partials/foot.php' ?>

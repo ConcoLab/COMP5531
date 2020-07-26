@@ -4,7 +4,7 @@ require '../partials/database.php';
 $message = '';
 if (!empty($_GET['id']) || !empty($_POST['id'])) {
     $pap_records = $conn->prepare('SELECT *
-                            FROM z_credit_cards
+                            FROM gxc55311.z_credit_cards
                             where cc_payment_method_id = :cc_payment_method_id
                             ');
 
@@ -24,13 +24,13 @@ if (!empty($_POST['holderName'])
 && !empty($_POST['cvv'])
 && !empty($_POST['id'])
 && !empty($_POST['type'])) {
-    $stmt = $conn->prepare('INSERT INTO z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
+    $stmt = $conn->prepare('INSERT INTO gxc55311.z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
     $user_id = $_SESSION["user_id"];
     $stmt->bindParam(':payment_method_user_id', $user_id);
 
     if ($stmt->execute()) {
         $last_id = $conn->lastInsertId();
-        $stmt = $conn->prepare('UPDATE z_credit_cards SET
+        $stmt = $conn->prepare('UPDATE gxc55311.z_credit_cards SET
         cc_number = :cc_number,
         cc_type = :cc_type,
         cc_holder_name = :cc_holder_name,

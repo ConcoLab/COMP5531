@@ -2,9 +2,9 @@
 <?php
 
 $job_records = $conn->prepare('SELECT *
-    FROM z_applications
-    JOIN z_jobs ON job_id = application_job_id
-    JOIN z_employers ON job_employer_id = employer_id
+    FROM gxc55311.z_applications
+    JOIN gxc55311.z_jobs ON job_id = application_job_id
+    JOIN gxc55311.z_employers ON job_employer_id = employer_id
     where application_candidate_id = :application_candidate_id
     ');
 $user_id = $_SESSION['user_id'];

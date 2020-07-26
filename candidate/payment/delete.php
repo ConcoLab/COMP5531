@@ -2,7 +2,7 @@
 require '../partials/database.php';
 
 if(!empty($_POST['id'])){
-    $sql = $conn->prepare("DELETE FROM z_payment_methods WHERE payment_method_id = :payment_method_id");
+    $sql = $conn->prepare("DELETE FROM gxc55311.z_payment_methods WHERE payment_method_id = :payment_method_id");
     $payment_method_id = $_POST['id'];
     $sql->bindParam(':payment_method_id', $payment_method_id);
 

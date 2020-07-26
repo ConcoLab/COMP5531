@@ -2,8 +2,8 @@
 require '../partials/database.php';
 
 $cc_records = $conn->prepare('SELECT *
-                            FROM z_payment_methods
-                            join z_credit_cards on cc_payment_method_id = payment_method_id
+                            FROM gxc55311.z_payment_methods
+                            join gxc55311.z_credit_cards on cc_payment_method_id = payment_method_id
                             where payment_method_user_id = :payment_method_user_id
                             ');
 
@@ -12,8 +12,8 @@ $cc_records->bindParam(':payment_method_user_id', $user_id);
 $cc_records->execute();
 
 $pap_records = $conn->prepare('SELECT *
-                            FROM z_payment_methods
-                            join z_paps on pap_payment_method_id = payment_method_id
+                            FROM gxc55311.z_payment_methods
+                            join gxc55311.z_paps on pap_payment_method_id = payment_method_id
                             where payment_method_user_id = :payment_method_user_id
                             ');
 

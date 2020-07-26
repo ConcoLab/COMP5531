@@ -3,13 +3,13 @@ require '../partials/database.php';
 $message = '';
 
 if (!empty($_POST['transit']) && !empty($_POST['institution']) && !empty($_POST['account'])) {
-    $stmt = $conn->prepare('INSERT INTO z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
+    $stmt = $conn->prepare('INSERT INTO gxc55311.z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
     $user_id = $_SESSION["user_id"];
     $stmt->bindParam(':payment_method_user_id', $user_id);
 
     if ($stmt->execute()) {
         $last_id = $conn->lastInsertId();
-        $stmt = $conn->prepare('INSERT INTO z_paps (pap_payment_method_id, pap_transit_number, pap_institution_number, pap_account_number) VALUES (:pap_payment_method_id, :pap_transit_number, :pap_institution_number, :pap_account_number)');
+        $stmt = $conn->prepare('INSERT INTO gxc55311.z_paps (pap_payment_method_id, pap_transit_number, pap_institution_number, pap_account_number) VALUES (:pap_payment_method_id, :pap_transit_number, :pap_institution_number, :pap_account_number)');
         $stmt->bindParam(':pap_payment_method_id', $last_id);
         $stmt->bindParam(':pap_transit_number', $_POST['transit']);
         $stmt->bindParam(':pap_institution_number', $_POST['institution']);

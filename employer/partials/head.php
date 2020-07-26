@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /COMP5531/.');
+  header('Location: /gxc55311/.');
 }
 
 ?>

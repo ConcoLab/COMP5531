@@ -1,10 +1,9 @@
-<?php require '../partials/layout.php' ?>
 <?php require '../partials/database.php' ?>
 
 <?php
 $job_status = 'Active';
 if (!empty($_POST['jobId'])) {
-    $stmt = $conn->prepare('INSERT INTO z_applications
+    $stmt = $conn->prepare('INSERT INTO gxc55311.z_applications
     (application_candidate_id, application_job_id, application_date, application_cv, application_status)
     VALUES(:application_candidate_id, :application_job_id, :application_date, :application_cv, :application_status);');
     $stmt->bindParam(':application_candidate_id', $_SESSION['user_id']);

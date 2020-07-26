@@ -3,8 +3,8 @@
 
 if (!empty($_GET['jobId'])) {
     $jobs_records = $conn->prepare('SELECT *
-    FROM z_jobs
-    JOIN z_employers ON job_employer_id = employer_id
+    FROM gxc55311.z_jobs
+    JOIN gxc55311.z_employers ON job_employer_id = employer_id
     where job_status = :job_status AND job_id = :job_id
     ');
 

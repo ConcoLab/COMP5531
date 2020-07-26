@@ -18,8 +18,8 @@ if (!empty($_GET['candidateId']) && !empty($_GET['jobId'])) {
 
 
     $application_record = $conn->prepare('SELECT *
-    FROM z_applications
-    JOIN z_candidates ON application_candidate_id = candidate_id
+    FROM gxc55311.z_applications
+    JOIN gxc55311.z_candidates ON application_candidate_id = candidate_id
     WHERE application_job_id = :application_job_id AND application_candidate_id = :application_candidate_id
     ');
     $job_id = $_GET['jobId'];
