@@ -32,6 +32,7 @@ $jobs_records->execute();
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Status</th>
+                        <th>Balance</th>
                         <th colspan="1">Actions</th>
                     </tr>
                 </thead>
@@ -47,6 +48,7 @@ $jobs_records->execute();
                             <td><?= $row['user_email'] ?></td>
                             <td><?= $row['user_phone'] ?></td>
                             <td><?= $row['user_status'] ?></td>
+                            <td><?= $row['user_balance'] ?></td>
 
                             <td>
                                 <?php

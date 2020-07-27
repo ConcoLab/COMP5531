@@ -20,8 +20,8 @@ if (!empty($_POST['title'])
 && !empty($_POST['description'])
 && !empty($_POST['positionNumbsers'])) {
     $stmt = $conn->prepare('INSERT INTO gxc55311.z_jobs
-    (job_title, job_location, job_type, job_description, job_status, job_number_of_positions, job_employer_id)
-    VALUES(:job_title, :job_location, :job_type, :job_description, :job_status, :job_number_of_positions, :job_employer_id)');
+    (job_title, job_location, job_type, job_description, job_status, job_number_of_positions, job_employer_id, job_date_posted)
+    VALUES(:job_title, :job_location, :job_type, :job_description, :job_status, :job_number_of_positions, :job_employer_id, :job_date_posted)');
     $stmt->bindParam(':job_title', $_POST['title']);
     $stmt->bindParam(':job_location', $_POST['location']);
     $stmt->bindParam(':job_type', $_POST['type']);
@@ -29,6 +29,9 @@ if (!empty($_POST['title'])
     $stmt->bindParam(':job_status', $job_status);
     $stmt->bindParam(':job_number_of_positions', $_POST['positionNumbsers']);
     $stmt->bindParam(':job_employer_id', $_SESSION['user_id']);
+    $date = date('Y-m-d');
+    echo $date;
+    $stmt->bindParam(':job_date_posted', $date);
 
     if ($stmt->execute()) {
         header("Location: .");

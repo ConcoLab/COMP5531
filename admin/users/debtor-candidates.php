@@ -11,8 +11,6 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
 $jobs_records = $conn->prepare('SELECT *
 FROM gxc55311.z_candidates
 JOIN gxc55311.z_users on user_id = candidate_id
-WHERE user_balance < 0
-ORDER BY user_balance DESC
 ');
 
 $jobs_records->execute();

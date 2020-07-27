@@ -18,14 +18,30 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../users/admins.php">Admins</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Users
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../users/admins.php">Admins</a>
+            <a class="dropdown-item" href="../users/candidates.php">Candidates</a>
+            <a class="dropdown-item" href="../users/employers.php">Employers</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="../users/debtor-candidates.php">Debtor Candidates</a>
+            <a class="dropdown-item" href="../users/debtor-employers.php">Debtor Employers</a>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../users/candidates.php">Candidates</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../users/employers.php">Employers</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Jobs
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../jobs">All</a>
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="../jobs/active-jobs.php">Active</a>
+            <a class="dropdown-item" href="../jobs/deactive-jobs.php">Deactive</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../jobs.php">Jobs</a>
@@ -40,7 +56,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
 
-        <a class="btn btn-outline-light my-2 my-sm-0" type="submit" href="../../logout.php">Logout</a>
+          <a class="btn btn-outline-light my-2 my-sm-0" type="submit" href="../../logout.php">Logout</a>
         </form>
       </div>
 
