@@ -42,7 +42,7 @@
           <a class="nav-link disabled text-warning" href="#" tabindex="-1" aria-disabled="true">Gold Member</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <form method="POST" class="form-inline my-2 my-lg-0">
 
         <a class="btn btn-outline-light my-2 my-sm-0" type="submit" href="../../logout.php">Logout</a>
       </form>
