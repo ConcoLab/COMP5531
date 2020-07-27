@@ -10,37 +10,40 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-  <a class="navbar-brand" href="/admin/.">Admin Panel</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="/admin/.">Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="./candidates.php">Candidates</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./employers.php">Employers</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./jobs.php">Jobs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./payments.php">Payments</a>
-      </li>
-    </ul>
-
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../users/admins.php">Admins</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../users/candidates.php">Candidates</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../users/employers.php">Employers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../jobs.php">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./payments.php">Payments</a>
+        </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
 
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
-      </form>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+
+        <a class="btn btn-outline-light my-2 my-sm-0" type="submit" href="../../logout.php">Logout</a>
+        </form>
+      </div>
+
+
     </div>
-
-
-  </div>
-</nav>
+  </nav>

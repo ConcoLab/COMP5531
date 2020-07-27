@@ -9,7 +9,7 @@ $message = '';
 
 
 if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
-  $records = $conn->prepare('SELECT user_id, user_email, user_password, user_username FROM gxc55311.z_users WHERE user_email = :user_email OR user_username = :user_username');
+  $records = $conn->prepare('SELECT user_id, user_email, user_password, user_username FROM gxc55311.z_users WHERE (user_email = :user_email OR user_username = :user_username) AND user_status != "Deactive"');
   $records->bindParam(':user_email', $_POST['emailOrUsername']);
   $records->bindParam(':user_username', $_POST['emailOrUsername']);
   $records->execute();
@@ -17,7 +17,7 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
 
   $message = '';
 
-  if (count($results) > 0 && $_POST['password'] == $results['user_password']) {
+  if (is_array($results) && count($results) > 0 && $_POST['password'] == $results['user_password']) {
     $_SESSION['user_id'] = $results['user_id'];
     $_SESSION['username'] = $results['user_username'];
 
