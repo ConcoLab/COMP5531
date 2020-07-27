@@ -40,6 +40,7 @@ $category_records->execute();
                             <td>
                                 <form method="POST" action="./edit.php">
                                     <input name="id" type="hidden" value="<?= $row['job_category_id'] ?>">
+                                    <input name="job_category_name" type="hidden" value="<?= $row['job_category_name'] ?>">
                                     <button class="btn btn-outline-warning btn-block" type="submit">Edit</button>
                                 </form>
                             </td>
