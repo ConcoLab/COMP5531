@@ -15,9 +15,22 @@ $category_records->execute();
 <?php require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
-    <h1>
-        Your Categories
-    </h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>
+                    Your Categories
+                </h1>
+            </div>
+            <div class="col-auto">
+                <form method="POST" action="./new.php">
+                    <button class="btn btn-success" type="submit">New Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <table class="table">
@@ -40,6 +53,7 @@ $category_records->execute();
                             <td>
                                 <form method="POST" action="./edit.php">
                                     <input name="id" type="hidden" value="<?= $row['job_category_id'] ?>">
+                                    <input name="job_category_name" type="hidden" value="<?= $row['job_category_name'] ?>">
                                     <button class="btn btn-outline-warning btn-block" type="submit">Edit</button>
                                 </form>
                             </td>
@@ -60,6 +74,9 @@ $category_records->execute();
             </table>
         </div>
     </div>
+
+    
+
 </div>
 
 

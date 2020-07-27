@@ -26,6 +26,9 @@
         <a class="nav-link" href="../jobs">Jobs</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="../categories">Categories</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="../membership">Membership</a>
       </li>
       <li class="nav-item">

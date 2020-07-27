@@ -23,9 +23,22 @@ $jobs_records->execute();
 <?php require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
-    <h1>
-        Your Posted Jobs
-    </h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>
+                Your Posted Jobs
+                </h1>
+            </div>
+            <div class="col-auto">
+                <form method="POST" action="./new.php">
+                    <button class="btn btn-success" type="submit">Post a Job</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
     <!-- <div class="card mb-5">
         <div class="card-body">
             <h5 class="card-title">Search</h5>
