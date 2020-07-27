@@ -1,6 +1,5 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
 
-<?php
 if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
 }
@@ -8,10 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
   header('Location: /gxc55311/.');
 }
-?>
 
-
-<?php
 $job_status = 'Active';
 if (!empty($_POST['jobId'])) {
     $stmt = $conn->prepare('INSERT INTO gxc55311.z_applications
@@ -39,6 +35,7 @@ echo date('Y-m-d');
 echo $_POST['jobId'];
 
 ?>
+
 <?php require_once '../../partials/head-candidate.php' ?>
 
 <?php require_once '../../partials/foot.php' ?>
