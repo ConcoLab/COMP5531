@@ -45,7 +45,7 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
     $admin->bindParam(':admin_id', $_SESSION['user_id']);
     if ($admin->execute() && $admin->fetchColumn() > 0) {
       $_SESSION['is_admin'] = true;
-      header("Location: ./admin/");
+      header("Location: ./admin/users/candidates.php");
     }
   } else {
     $message = 'Sorry, those credentials do not match';
