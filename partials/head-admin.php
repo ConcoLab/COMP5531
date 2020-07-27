@@ -11,7 +11,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <a class="navbar-brand" href="/admin/.">Admin Panel</a>
+    <a class="navbar-brand" href="#">Admin Panel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -42,9 +42,6 @@
             <a class="dropdown-item" href="../jobs/active-jobs.php">Active</a>
             <a class="dropdown-item" href="../jobs/deactive-jobs.php">Deactive</a>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../jobs.php">Jobs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./payments.php">Payments</a>

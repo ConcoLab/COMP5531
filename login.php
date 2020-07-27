@@ -21,20 +21,25 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
     $_SESSION['user_id'] = $results['user_id'];
     $_SESSION['username'] = $results['user_username'];
 
-    $employer = $conn->prepare('SELECT COUNT(*) FROM gxc55311.z_employers WHERE employer_id = :employer_id');
+    $employer = $conn->prepare('SELECT * FROM gxc55311.z_employers WHERE employer_id = :employer_id LIMIT 1');
     $employer->bindParam(':employer_id', $_SESSION['user_id']);
-    if ($employer->execute() && $employer->fetchColumn() > 0) {
+    $employer->execute();
+    $result = $employer->fetch(PDO::FETCH_ASSOC);
+    if ($result) {
       $_SESSION['is_employer'] = true;
+      $_SESSION['employer_category'] = $result["employer_category"];
       header("Location: ./employer/jobs");
     }
 
-    $candidate = $conn->prepare('SELECT COUNT(*) FROM gxc55311.z_candidates WHERE candidate_id = :candidate_id');
-    $candidate->bindParam(':candidate_id', $_SESSION['user_id']);
-    if ($candidate->execute() && $candidate->fetchColumn() > 0) {
+    $employer = $conn->prepare('SELECT * FROM gxc55311.z_candidates WHERE candidate_id = :candidate_id LIMIT 1');
+    $employer->bindParam(':employer_id', $_SESSION['user_id']);
+    $employer->execute();
+    $result = $employer->fetch(PDO::FETCH_ASSOC);
+    if ($result) {
       $_SESSION['is_candidate'] = true;
+      $_SESSION['candidate_category'] = $result["candidate_category"];
       header("Location: ./candidate/jobs");
     }
-
 
     $admin = $conn->prepare('SELECT COUNT(*) FROM gxc55311.z_admins WHERE admin_id = :admin_id');
     $admin->bindParam(':admin_id', $_SESSION['user_id']);
@@ -45,7 +50,6 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
   } else {
     $message = 'Sorry, those credentials do not match';
   }
-
 }
 
 ?>
