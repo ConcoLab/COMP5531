@@ -25,12 +25,14 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
     $employer->bindParam(':employer_id', $_SESSION['user_id']);
     if ($employer->execute() && $employer->fetchColumn() > 0) {
       $_SESSION['is_employer'] = true;
+      header("Location: ./employer/jobs");
     }
 
     $candidate = $conn->prepare('SELECT COUNT(*) FROM gxc55311.z_candidates WHERE candidate_id = :candidate_id');
     $candidate->bindParam(':candidate_id', $_SESSION['user_id']);
     if ($candidate->execute() && $candidate->fetchColumn() > 0) {
       $_SESSION['is_candidate'] = true;
+      header("Location: ./candidate/jobs");
     }
 
 
@@ -38,8 +40,8 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
     $admin->bindParam(':admin_id', $_SESSION['user_id']);
     if ($admin->execute() && $admin->fetchColumn() > 0) {
       $_SESSION['is_admin'] = true;
+      header("Location: ./admin/");
     }
-    header("Location: .");
   } else {
     $message = 'Sorry, those credentials do not match';
   }

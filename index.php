@@ -1,9 +1,13 @@
 <?php
 require_once './partials/database.php';
 require_once './partials/head-public.php';
-echo $_SESSION['user_id'];
-echo isset($_SESSION['user_id']);
-echo (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']);
+if(isset($_SESSION["is_candidate"]) && $_SESSION["is_candidate"]){
+  header("Location: ./candidate/jobs");
+}else if (isset($_SESSION["is_employer"]) && $_SESSION["is_employer"]){
+  header("Location: ./employer/jobs");
+}else if (isset($_SESSION["is_admin"]) && $_SESSION["is_admin"]){
+  header("Location: ./admin");
+}
 ?>
 
 <div class="container">
