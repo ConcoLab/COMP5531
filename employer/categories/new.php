@@ -33,7 +33,7 @@ if (!empty($_POST['name'])) {
 
 <div class="container">
     <h1>
-        Create a Job Category
+        Create Job Category
     </h1>
     <div class="alert alert-danger" role="alert">
         <?php echo $message ?>
