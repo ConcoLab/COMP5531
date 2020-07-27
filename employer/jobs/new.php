@@ -1,10 +1,10 @@
 <?php require_once '../../partials/database.php' ?>
 <?php
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_COOKIE['user_id'])) {
   header('Location: ../../login.php');
 }
 
-if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
+if (!isset($_COOKIE['is_employer']) && !$_COOKIE['is_employer']) {
   header('Location: /gxc55311/.');
 }
 
@@ -28,7 +28,7 @@ if (!empty($_POST['title'])
     $stmt->bindParam(':job_description', $_POST['description']);
     $stmt->bindParam(':job_status', $job_status);
     $stmt->bindParam(':job_number_of_positions', $_POST['positionNumbsers']);
-    $stmt->bindParam(':job_employer_id', $_SESSION['user_id']);
+    $stmt->bindParam(':job_employer_id', $_COOKIE['user_id']);
 
     if ($stmt->execute()) {
         header("Location: .");

@@ -20,21 +20,21 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-      <?php if (isset($_SESSION['user_id'])) { ?>
-        <?php if (isset($_SESSION['is_candidate']) && $_SESSION['is_candidate']) { ?>
+      <?php if (isset($_COOKIE['user_id'])) { ?>
+        <?php if (isset($_COOKIE['is_candidate']) && $_COOKIE['is_candidate']) { ?>
           <li class="nav-item">
             <a class="nav-link" href="./candidate/login.php">Candidate</a>
           </li>
         <?php } ?>
 
-        <?php if (isset($_SESSION['is_employer']) && $_SESSION['is_employer']) { ?>
+        <?php if (isset($_COOKIE['is_employer']) && $_COOKIE['is_employer']) { ?>
 
           <li class="nav-item">
             <a class="nav-link" href="./candidate/login.php">Employer</a>
           </li>
         <?php } ?>
 
-        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) { ?>
+        <?php if (isset($_COOKIE['is_admin']) && $_COOKIE['is_admin']) { ?>
 
           <li class="nav-item">
             <a class="nav-link" href="./candidate/login.php">Admin</a>

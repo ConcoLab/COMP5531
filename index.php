@@ -1,15 +1,15 @@
 <?php
 require_once './partials/database.php';
 require_once './partials/head-public.php';
-echo $_SESSION['user_id'];
-echo isset($_SESSION['user_id']);
-echo (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']);
+echo $_COOKIE['user_id'];
+echo isset($_COOKIE['user_id']);
+echo (!isset($_COOKIE['is_admin']) && !$_COOKIE['is_admin']);
 ?>
 
 <div class="container">
   <div class="row">
-    <?php if (isset($_SESSION['user_id'])) { ?>
-      <?php if (isset($_SESSION['is_candidate']) && $_SESSION['is_candidate']) { ?>
+    <?php if (isset($_COOKIE['user_id'])) { ?>
+      <?php if (isset($_COOKIE['is_candidate']) && $_COOKIE['is_candidate']) { ?>
         <div class="col-12 alert alert-success">
           <h2>
             Candidate
@@ -31,7 +31,7 @@ echo (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']);
         </div>
       <?php } ?>
 
-      <?php if (isset($_SESSION['is_employer']) && $_SESSION['is_employer']) { ?>
+      <?php if (isset($_COOKIE['is_employer']) && $_COOKIE['is_employer']) { ?>
         <div class="col-12 alert alert-info">
           <h2>
             Employer
@@ -53,7 +53,7 @@ echo (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']);
         </div>
       <?php } ?>
 
-      <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) { ?>
+      <?php if (isset($_COOKIE['is_admin']) && $_COOKIE['is_admin']) { ?>
 
         <div class="col-12 alert alert-dark">
           <h2>

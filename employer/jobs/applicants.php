@@ -13,7 +13,7 @@ if (!empty($_GET['id'])) {
     ');
     $job_id = $_GET['id'];
     $job_record->bindParam(':job_id', $job_id);
-    if (!$job_record->execute() && $job_record['job_employer_id'] != $_SESSION['user_id']) {
+    if (!$job_record->execute() && $job_record['job_employer_id'] != $_COOKIE['user_id']) {
         header("Location: .");
     }
 

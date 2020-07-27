@@ -7,7 +7,7 @@ $cc_records = $conn->prepare('SELECT *
                             where payment_method_user_id = :payment_method_user_id
                             ');
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_COOKIE['user_id'];
 $cc_records->bindParam(':payment_method_user_id', $user_id);
 $cc_records->execute();
 
@@ -17,7 +17,7 @@ $pap_records = $conn->prepare('SELECT *
                             where payment_method_user_id = :payment_method_user_id
                             ');
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_COOKIE['user_id'];
 $pap_records->bindParam(':payment_method_user_id', $user_id);
 $pap_records->execute();
 ?>
