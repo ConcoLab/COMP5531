@@ -2,7 +2,7 @@
 
 require_once './partials/database.php';
 
-if (isset($_COOKIE['user_id'])) {
+if (isset($_SESSION['user_id'])) {
   header('Location: .');
 }
 

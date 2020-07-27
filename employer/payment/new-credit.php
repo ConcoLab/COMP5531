@@ -10,7 +10,7 @@ if (!empty($_POST['holderName'])
 && !empty($_POST['cvv'])
 && !empty($_POST['type'])) {
     $stmt = $conn->prepare('INSERT INTO gxc55311.z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
-    $user_id = $_COOKIE["user_id"];
+    $user_id = $_SESSION["user_id"];
     $stmt->bindParam(':payment_method_user_id', $user_id);
 
     if ($stmt->execute()) {

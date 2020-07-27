@@ -7,7 +7,7 @@ FROM gxc55311.z_job_categories
 where job_category_employer_id = :job_category_employer_id
 ');
 
-$user_id = $_COOKIE['user_id'];
+$user_id = $_SESSION['user_id'];
 $category_records->bindParam(':job_category_employer_id', $user_id);
 $category_records->execute();
 ?>

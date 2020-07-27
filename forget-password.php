@@ -1,5 +1,5 @@
 <?php
-  if (isset($_COOKIE['user_id'])) {
+  if (isset($_SESSION['user_id'])) {
     header('Location: /php-login');
   }
   require_once 'database.php';
@@ -13,7 +13,7 @@
     $message = '';
 
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
-      $_COOKIE['user_id'] = $results['id'];
+      $_SESSION['user_id'] = $results['id'];
       header("Location: /php-login");
     } else {
       $message = 'Sorry, those credentials do not match';
