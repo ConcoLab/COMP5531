@@ -16,7 +16,7 @@ $category_records->execute();
 
 <div class="container">
     <h1>
-        Your Categories
+        Your Categories!
     </h1>
     <div class="row">
         <div class="col-12">
