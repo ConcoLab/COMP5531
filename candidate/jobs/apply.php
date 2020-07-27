@@ -35,7 +35,3 @@ echo date('Y-m-d');
 echo $_POST['jobId'];
 
 ?>
-
-<?php require_once '../../partials/head-candidate.php' ?>
-
-<?php require_once '../../partials/foot.php' ?>

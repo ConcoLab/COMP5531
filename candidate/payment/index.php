@@ -1,6 +1,5 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
 
-<?php
 if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
 }
@@ -8,10 +7,6 @@ if (!isset($_SESSION['user_id'])) {
 if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
   header('Location: /gxc55311/.');
 }
-?>
-
-
-<?php
 $cc_records = $conn->prepare('SELECT *
                             FROM gxc55311.z_payment_methods
                             join gxc55311.z_credit_cards on cc_payment_method_id = payment_method_id
