@@ -1,7 +1,7 @@
 <?php
 require_once './partials/database.php';
 
-if (isset($_COOKIE['user_id'])) {
+if (isset($_SESSION['user_id'])) {
   header("Location: .");
 }
 $message = '';
@@ -18,32 +18,26 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
   $message = '';
 
   if (count($results) > 0 && $_POST['password'] == $results['user_password']) {
-    // $_COOKIE['user_id'] = $results['user_id'];
-    // $_COOKIE['username'] = $results['user_username'];
-    setcookie("user_id", $results['user_id'], time() + (900), "/");
-    setcookie("username", $results['user_username'], time() + (900), "/");
+    $_SESSION['user_id'] = $results['user_id'];
+    $_SESSION['username'] = $results['user_username'];
 
     $employer = $conn->prepare('SELECT COUNT(*) FROM gxc55311.z_employers WHERE employer_id = :employer_id');
-    $employer->bindParam(':employer_id', $_COOKIE['user_id']);
+    $employer->bindParam(':employer_id', $_SESSION['user_id']);
     if ($employer->execute() && $employer->fetchColumn() > 0) {
-      // $_COOKIE['is_employer'] = true;
-      setcookie("is_employer", $results['is_employer'], time() + (900), "/");
+      $_SESSION['is_employer'] = true;
     }
 
     $candidate = $conn->prepare('SELECT COUNT(*) FROM gxc55311.z_candidates WHERE candidate_id = :candidate_id');
-    $candidate->bindParam(':candidate_id', $_COOKIE['user_id']);
+    $candidate->bindParam(':candidate_id', $_SESSION['user_id']);
     if ($candidate->execute() && $candidate->fetchColumn() > 0) {
-      // $_COOKIE['is_candidate'] = true;
-      setcookie("is_candidate", $results['is_candidate'], time() + (900), "/");
+      $_SESSION['is_candidate'] = true;
     }
 
 
     $admin = $conn->prepare('SELECT COUNT(*) FROM gxc55311.z_admins WHERE admin_id = :admin_id');
-    $admin->bindParam(':admin_id', $_COOKIE['user_id']);
+    $admin->bindParam(':admin_id', $_SESSION['user_id']);
     if ($admin->execute() && $admin->fetchColumn() > 0) {
-      // $_COOKIE['is_admin'] = true;
-      setcookie("is_admin", $results['is_admin'], time() + (900), "/");
-
+      $_SESSION['is_admin'] = true;
     }
     header("Location: .");
   } else {

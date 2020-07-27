@@ -1,10 +1,10 @@
 <?php require_once '../../partials/database.php' ?>
 <?php
-if (!isset($_COOKIE['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
 }
 
-if (!isset($_COOKIE['is_candidate']) && !$_COOKIE['is_candidate']) {
+if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
   header('Location: /gxc55311/.');
 }
 ?>
@@ -18,7 +18,7 @@ $job_records = $conn->prepare('SELECT *
     JOIN gxc55311.z_employers ON job_employer_id = employer_id
     where application_candidate_id = :application_candidate_id
     ');
-$user_id = $_COOKIE['user_id'];
+$user_id = $_SESSION['user_id'];
 $job_records->bindParam(':application_candidate_id', $user_id);
 $job_records->execute();
 

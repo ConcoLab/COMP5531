@@ -1,10 +1,10 @@
 <?php require_once '../../partials/database.php' ?>
 <?php
-if (!isset($_COOKIE['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
 }
 
-if (!isset($_COOKIE['is_employer']) && !$_COOKIE['is_employer']) {
+if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
   header('Location: /gxc55311/.');
 }
 

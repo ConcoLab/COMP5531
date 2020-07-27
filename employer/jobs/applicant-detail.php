@@ -12,7 +12,7 @@ if (!empty($_GET['candidateId']) && !empty($_GET['jobId'])) {
     // $candidate_id = $_GET['candidateId'];
     // $application_record->bindParam(':application_candidate_id', $candidate_id);
     // $application_record->bindParam(':application_job_id', $jobId);
-    // if (!$application_record->execute() && $application_record['job_employer_id'] != $_COOKIE['user_id']) {
+    // if (!$application_record->execute() && $application_record['job_employer_id'] != $_SESSION['user_id']) {
     //     header("Location: .");
     // }
 
