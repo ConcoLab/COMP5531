@@ -12,12 +12,14 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
 <?php
 $message = '';
 $job_status = 'Active';
-
+$job_success = False;
+$categ_success = False;
 
 if (!empty($_POST['title'])
 && !empty($_POST['location'])
 && !empty($_POST['type'])
 && !empty($_POST['description'])
+&& !empty($_POST['job_categories'])
 && !empty($_POST['positionNumbsers'])) {
     $stmt = $conn->prepare('INSERT INTO gxc55311.z_jobs
     (job_title, job_location, job_type, job_description, job_status, job_number_of_positions, job_employer_id, job_date_posted)
@@ -30,15 +32,39 @@ if (!empty($_POST['title'])
     $stmt->bindParam(':job_number_of_positions', $_POST['positionNumbsers']);
     $stmt->bindParam(':job_employer_id', $_SESSION['user_id']);
     $date = date('Y-m-d');
-    echo $date;
     $stmt->bindParam(':job_date_posted', $date);
 
-    if ($stmt->execute()) {
-        header("Location: .");
-    } else {
-        $message = 'Sorry, entered values are not correct.';
+    $job_success = $stmt->execute();
+
+    $job_id = $conn->lastInsertId();
+
+
+
+    foreach ($_POST['job_categories'] as $categ_id){
+        $categ = $conn->prepare('INSERT INTO gxc55311.z_jobs_job_categories
+        (job_id, job_category_id)
+        VALUES(:job_id, :job_category_id)');
+        $categ->bindParam(':job_id', $job_id);
+        $categ->bindParam(':job_category_id', $categ_id);
+        $categ_success = $categ->execute();
     }
-}
+
+    }
+    if ($job_success && $categ_success) {
+        header("Location: .");
+    }/* else {
+        $message = 'Sorry, entered values are not correct.';
+    }*/
+
+?>
+
+<?php
+$employer_id = $_SESSION['user_id'];
+    $categories = $conn->prepare('SELECT job_category_id, job_category_name
+                            FROM gxc55311.z_job_categories
+                            WHERE job_category_employer_id = :employer_id OR job_category_employer_id IS NULL');
+    $categories->bindParam(':employer_id', $employer_id);
+    $categories->execute();
 
 ?>
 
@@ -76,6 +102,23 @@ if (!empty($_POST['title'])
                         <div class="form-group">
                             <label for="description">Job Description</label>
                             <textarea class="form-control" name="description" id="description" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="categories">Job Categories</label>
+
+                            <select name="job_categories[]" class="custom-select" multiple>
+                                <?php
+                                    while ($category = $categories->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+                                ?>
+
+                                <option value=<?= $category['job_category_id'] ?>><?= $category['job_category_name'] ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+
+
+
                         </div>
                         <div class="form-group">
                             <label for="positionNumbsers">Number of Positions</label>

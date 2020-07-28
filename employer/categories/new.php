@@ -35,9 +35,9 @@ if (!empty($_POST['name'])) {
     <h1>
         Create Job Category
     </h1>
-    <div class="alert alert-danger" role="alert">
+<!--     <div class="alert alert-danger" role="alert">
         <?php echo $message ?>
-    </div>
+    </div> -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">

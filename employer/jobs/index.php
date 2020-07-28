@@ -38,7 +38,7 @@ $jobs_records->execute();
             </div>
         </div>
     </div>
-    
+
     <!-- <div class="card mb-5">
         <div class="card-body">
             <h5 class="card-title">Search</h5>
@@ -98,6 +98,7 @@ $jobs_records->execute();
                         <th>Title</th>
                         <th>Location</th>
                         <th>Type</th>
+                        <th>Date</th>
                         <th>Status</th>
                         <th colspan="4">Actions</th>
                     </tr>
@@ -113,6 +114,7 @@ $jobs_records->execute();
                             <td><?= $row['job_title'] ?></td>
                             <td><?= $row['job_location'] ?></td>
                             <td><?= $row['job_type'] ?></td>
+                            <td><?= $row['job_date_posted'] ?></td>
                             <td>
                                 <?php
                                 if ($row['job_status'] == 'Active') {
