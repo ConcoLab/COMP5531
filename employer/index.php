@@ -9,17 +9,12 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
     header('Location: ../index.php');
 }
 
+header('Location: profile/');
+
 ?>
 
 
 <?php require_once '../partials/head-employer.php' ?>
-
-<div class="container">
-    <h1>
-        Index
-    </h1>
-
-</div>
 
 
 <?php require_once '../partials/foot.php' ?>

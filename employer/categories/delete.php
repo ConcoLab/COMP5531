@@ -10,14 +10,16 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
 
 ?>
 <?php
+$message = "";
 if (!empty($_POST['id'])) {
     $stmt = $conn->prepare('DELETE FROM gxc55311.z_job_categories
                             WHERE job_category_id = :job_category_id');
     $stmt->bindParam(':job_category_id', $_POST['id']);
 
     if ($stmt->execute()) {
-        header("Location: .");
+        $message = "Success: Category has been deteled!";
+        header("Location: .?msg=$message");
     } else {
-        $message = 'Sorry, entered values are not correct.';
+        $message = 'Error: Could not delete category!';
     }
 }

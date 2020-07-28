@@ -1,7 +1,7 @@
 <?php
 require_once '../../partials/database.php';
 
-echo $_SESSION['user_id'];
+echo $_SESSION['user_id']."\n";
 $today = new DateTime(date('Y-m-d'));
 $end = new DateTime(date('Y-m-t'));
 $diff = date_diff($today, $end);

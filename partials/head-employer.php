@@ -1,3 +1,16 @@
+<?php require_once '../../partials/database.php' ?>
+
+<?php
+$category = "";
+$stmt_category = $conn->prepare('SELECT employer_category
+                                FROM gxc55311.z_employers
+                                WHERE employer_id = :employer_id');
+    $stmt_category->bindParam(':employer_id', $_SESSION['user_id']);
+
+    $stmt_category->execute();
+    $category = $stmt_category->fetchColumn();
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -19,9 +32,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="../jobs/new.php">New</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="../jobs">Jobs</a>
       </li>
@@ -41,9 +54,21 @@
         <li class="nav-item">
           <a class="nav-link" href="../profile">Profile</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled text-warning" href="#" tabindex="-1" aria-disabled="true">Gold Member</a>
-        </li>
+        <?php
+          if($category == "Gold"){
+        ?>
+          <li class="nav-item">
+            <a class="nav-link disabled text-warning" href="#" tabindex="-1" aria-disabled="true"><?= $category ?> Member</a>
+          </li>
+        <?php
+          }else if($category == "Prime"){
+        ?>
+          <li class="nav-item">
+            <a class="nav-link disabled text-white" href="#" tabindex="-1" aria-disabled="true"><?= $category ?> Member</a>
+          </li>
+        <?php
+          }
+        ?>
       </ul>
       <form method="POST" class="form-inline my-2 my-lg-0">
 

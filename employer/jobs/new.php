@@ -9,6 +9,24 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
 }
 
 ?>
+
+<?php
+// check if employer is a Prime Member
+$stmt_prime = $conn->prepare('SELECT COUNT(job_id) >= 5
+                                FROM gxc55311.z_jobs, gxc55311.z_employers
+                                WHERE job_employer_id = :employer_id AND
+                                employer_category = "Prime" AND
+                                employer_id = job_employer_id;');
+    $stmt_prime->bindParam(':employer_id', $_SESSION['user_id']);
+
+    $stmt_prime->execute();
+    if($stmt_prime->fetchColumn()){
+        $message = "Error: Prime members can post up to 5 jobs!";
+        header("Location: .?msg=$message");
+    }
+
+?>
+
 <?php
 $message = '';
 $job_status = 'Active';
@@ -51,10 +69,12 @@ if (!empty($_POST['title'])
 
     }
     if ($job_success && $categ_success) {
-        header("Location: .");
-    }/* else {
-        $message = 'Sorry, entered values are not correct.';
-    }*/
+        $message = "Success: Job has been posted!";
+        header("Location: .?msg=$message");
+    }else {
+        if (isset($_POST['submit']))
+            $message = 'Error: All fields are required!';
+    }
 
 ?>
 
@@ -75,9 +95,22 @@ $employer_id = $_SESSION['user_id'];
     <h1>
         Post Job
     </h1>
-    <div class="alert alert-danger" role="alert">
-        <?php echo $message ?>
-    </div>
+    <?php
+        // display message
+        if(substr($message, 0, strlen("Success")) === "Success") {
+    ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }
+    ?>
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
@@ -124,7 +157,7 @@ $employer_id = $_SESSION['user_id'];
                             <label for="positionNumbsers">Number of Positions</label>
                             <input type="number" name="positionNumbsers" class="form-control" id="positionNumbsers" aria-describedby="positionNumbsersHelp">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

@@ -2,6 +2,8 @@
 
 
 <?php
+$message = !empty($_GET['msg']) ? $_GET['msg'] : "";
+
 $category_records = $conn->prepare('SELECT *
 FROM gxc55311.z_job_categories
 where job_category_employer_id = :job_category_employer_id
@@ -10,6 +12,8 @@ where job_category_employer_id = :job_category_employer_id
 $user_id = $_SESSION['user_id'];
 $category_records->bindParam(':job_category_employer_id', $user_id);
 $category_records->execute();
+
+
 ?>
 
 <?php require_once '../../partials/head-employer.php' ?>
@@ -30,6 +34,23 @@ $category_records->execute();
             </div>
         </div>
     </div>
+
+    <?php
+        // display message
+        if(substr($message, 0, strlen("Success")) === "Success") {
+    ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }
+    ?>
 
     <div class="row">
         <div class="col-12">
@@ -75,7 +96,7 @@ $category_records->execute();
         </div>
     </div>
 
-    
+
 
 </div>
 

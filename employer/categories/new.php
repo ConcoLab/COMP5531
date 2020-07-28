@@ -20,12 +20,16 @@ if (!empty($_POST['name'])) {
     $stmt->bindParam(':job_category_employer_id', $_SESSION['user_id']);
 
     if ($stmt->execute()) {
-        header("Location: .");
+        $message = "Success: Category has been added!";
     } else {
-        $message = 'Sorry, entered values are not correct.';
+        $message = 'Error: Category hasn\'t been added!';
     }
+    header("Location: .?msg=$message");
 }
-
+else {
+        if (isset($_POST['submit']))
+            $message = 'Error: Name cannot be empty!';
+    }
 ?>
 
 
@@ -35,9 +39,22 @@ if (!empty($_POST['name'])) {
     <h1>
         Create Job Category
     </h1>
-<!--     <div class="alert alert-danger" role="alert">
-        <?php echo $message ?>
-    </div> -->
+    <?php
+        // display message
+        if(substr($message, 0, strlen("Success")) === "Success") {
+    ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }
+    ?>
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
@@ -48,11 +65,10 @@ if (!empty($_POST['name'])) {
                             <label for="name">Name</label>
                             <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

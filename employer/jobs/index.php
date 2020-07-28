@@ -10,33 +10,76 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
 }
 
 ?>
+
+
 <?php
+$message = !empty($_GET['msg']) ? $_GET['msg'] : "";
+
+$date_start = (empty($_POST['date_start'])) ? date('0-0-0') : $_POST['date_start'];
+$date_end = (empty($_POST['date_end'])) ? date('Y-m-d') : $_POST['date_end'];
+
 $jobs_records = $conn->prepare('SELECT *
-FROM gxc55311.z_jobs
-where job_employer_id = :job_employer_id
-');
+                            FROM gxc55311.z_jobs
+                            where job_employer_id = :job_employer_id AND
+                            job_date_posted >= :date_start AND
+                            job_date_posted <= :date_end');
 
 $user_id = $_SESSION['user_id'];
+$jobs_records->bindParam(':date_start', $date_start);
+$jobs_records->bindParam(':date_end', $date_end);
 $jobs_records->bindParam(':job_employer_id', $user_id);
 $jobs_records->execute();
 ?>
+
 <?php require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
 
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <div class="col">
                 <h1>
                 Your Posted Jobs
                 </h1>
             </div>
-            <div class="col-auto">
+            <div class="col-md-2 offset-md-2">
+
                 <form method="POST" action="./new.php">
-                    <button class="btn btn-success" type="submit">Post a Job</button>
+                    <button class="btn btn-success btn-block" type="submit">Post a Job</button>
                 </form>
             </div>
         </div>
+        <?php
+            // display message
+            if(substr($message, 0, strlen("Success")) === "Success") {
+        ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo $message ?>
+            </div>
+        <?php
+            }else if (substr($message, 0, strlen("Error")) === "Error"){
+        ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $message ?>
+            </div>
+        <?php
+            }
+        ?>
+        <form method="POST" action="." class="form-group">
+            <div class="row justify-content-end">
+                <div class="col-md-3">
+                    <label for="date_start"><strong>From:</strong></label>
+                    <input type="date" style="height:100%;" id="date_start" name="date_start">
+                </div>
+                <div class="col-md-3">
+                    <label for="date_end"><strong>To:</strong></label>
+                    <input type="date" style="height:100%" id="date_end" name="date_end">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-block" type="submit">Filter</button>
+                </div>
+            </div>
+        </form>
     </div>
 
     <!-- <div class="card mb-5">
