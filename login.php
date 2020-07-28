@@ -32,7 +32,7 @@ if (!empty($_POST['emailOrUsername']) && !empty($_POST['password'])) {
     }
 
     $employer = $conn->prepare('SELECT * FROM gxc55311.z_candidates WHERE candidate_id = :candidate_id LIMIT 1');
-    $employer->bindParam(':employer_id', $_SESSION['user_id']);
+    $employer->bindParam(':candidate_id', $_SESSION['user_id']);
     $employer->execute();
     $result = $employer->fetch(PDO::FETCH_ASSOC);
     if ($result) {

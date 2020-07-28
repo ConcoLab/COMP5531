@@ -23,7 +23,8 @@ if (
   !empty($_POST['lastName']) &&
   !empty($_POST['address'])
 ) {
-  $sql = "INSERT INTO gxc55311.z_users (user_username, user_email, user_password, user_phone, user_address) VALUES (:user_username, :user_email, :user_password, :user_phone, :user_address)";
+  $sql = "INSERT INTO gxc55311.z_users (user_username, user_email, user_password, user_phone, user_address, user_status)
+  VALUES (:user_username, :user_email, :user_password, :user_phone, :user_address, :user_status)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':user_username', $_POST['username']);
   $stmt->bindParam(':user_email', $_POST['email']);
@@ -61,7 +62,8 @@ if (
   !empty($_POST['representative']) &&
   !empty($_POST['address'])
 ) {
-  $sql = "INSERT INTO gxc55311.z_users (user_username, user_email, user_password, user_phone, user_address, user_status) VALUES (:user_username, :user_email, :user_password, :user_phone, :user_address, :user_status)";
+  $sql = "INSERT INTO gxc55311.z_users (user_username, user_email, user_password, user_phone, user_address, user_status)
+  VALUES (:user_username, :user_email, :user_password, :user_phone, :user_address, :user_status)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':user_username', $_POST['username']);
   $stmt->bindParam(':user_email', $_POST['email']);
