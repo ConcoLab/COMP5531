@@ -38,7 +38,7 @@ if (
 
   if ($stmt->execute()) {
     $last_id = $conn->lastInsertId();
-    $sql = "INSERT INTO gxc55311.z_candidates (candidate_id, candidate_first_name, candidate_last_name) VALUES (:candidate_id, :candidate_first_name, :candidate_last_name)";
+    $sql = "INSERT INTO gxc55311.z_candidates (candidate_id, candidate_first_name, candidate_last_name, candidate_category) VALUES (:candidate_id, :candidate_first_name, :candidate_last_name, 'Basic')";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':candidate_id', $last_id);
     $stmt->bindParam(':candidate_first_name', $_POST['firstName']);
@@ -76,7 +76,7 @@ if (
 
   if ($stmt->execute()) {
     $last_id = $conn->lastInsertId();
-    $sql = "INSERT INTO gxc55311.z_employers (employer_id, employer_name, employer_representative) VALUES (:employer_id, :employer_name, :employer_representative)";
+    $sql = "INSERT INTO gxc55311.z_employers (employer_id, employer_name, employer_representative, employer_category) VALUES (:employer_id, :employer_name, :employer_representative, 'Basic')";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':employer_id', $last_id);
     $stmt->bindParam(':employer_name', $_POST['employerName']);

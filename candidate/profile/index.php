@@ -1,5 +1,8 @@
 
-<?php require_once '../../partials/head-candidate.php' ?>
+<?php
+require_once '../../partials/database.php';
+require_once '../../partials/head-candidate.php';
+?>
 
 <div class="container">
     <h1>

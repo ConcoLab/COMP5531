@@ -1,11 +1,15 @@
 <?php
 require_once '../../partials/database.php';
+
+echo $_SESSION['user_id']."\n";
 $today = new DateTime(date('Y-m-d'));
 $end = new DateTime(date('Y-m-t'));
 $diff = date_diff($today, $end);
 $days_left = $diff->d;
 $days_passed = 30 - $days_left;
-if ($_SESSION["employer_category"] == "Gold") {
+
+echo $_SESSION["candidate_category"];
+if ($_SESSION["candidate_category"] != "Gold" && $_SESSION["candidate_category"] != "Prime") {
     $stmt = $conn->prepare('SELECT * FROM gxc55311.z_users
                             WHERE user_id = :user_id LIMIT 1');
     $stmt->bindParam(':user_id', $_SESSION['user_id']);
@@ -14,18 +18,18 @@ if ($_SESSION["employer_category"] == "Gold") {
     if ($result) {
         $current_balance = $result['user_balance'];
         echo $current_balance;
-        $balance = $current_balance + (100 / 30) * $days_left;
+        $balance = $current_balance - (10 / 30) * $days_left;
 
         $stmt_user = $conn->prepare('UPDATE gxc55311.z_users SET user_balance = :user_balance
                             WHERE user_id = :user_id');
         $stmt_user->bindParam(':user_id', $_SESSION['user_id']);
         $stmt_user->bindParam(':user_balance', $balance);
         if ($stmt->execute()) {
-            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_employers SET employer_category = ""
-                            WHERE employer_id = :employer_id');
-            $stmt_employer->bindParam(':employer_id', $_SESSION['user_id']);
+            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_candidates SET candidate_category = "Prime"
+                            WHERE candidate_id = :candidate_id');
+            $stmt_employer->bindParam(':candidate_id', $_SESSION['user_id']);
             if ($stmt_employer->execute()) {
-                $_SESSION["employer_category"] = NULL;
+                $_SESSION["candidate_category"] = "Prime";
                 header("Location: .");
             } else {
                 $message = 'Sorry, entered values are not correct.';
@@ -34,7 +38,7 @@ if ($_SESSION["employer_category"] == "Gold") {
             $message = 'Sorry, entered values are not correct.';
         }
     }
-} else if ($_SESSION["employer_category"] == "Prime") {
+} else if ($_SESSION["candidate_category"] == "Gold") {
     $stmt = $conn->prepare('SELECT * FROM gxc55311.z_users
                             WHERE user_id = :user_id LIMIT 1');
     $stmt->bindParam(':user_id', $_SESSION['user_id']);
@@ -43,18 +47,18 @@ if ($_SESSION["employer_category"] == "Gold") {
     if ($result) {
         $current_balance = $result['user_balance'];
         echo $current_balance;
-        $balance = $current_balance + (50 / 30) * $days_left;
+        $balance = $current_balance - (10 / 30) * $days_left + (20 / 30) * $days_left;
         echo $balance;
         $stmt_user = $conn->prepare('UPDATE gxc55311.z_users SET user_balance = :user_balance
                             WHERE user_id = :user_id');
         $stmt_user->bindParam(':user_id', $_SESSION['user_id']);
         $stmt_user->bindParam(':user_balance', $balance);
         if ($stmt_user->execute()) {
-            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_employers SET employer_category = ""
-                            WHERE employer_id = :employer_id');
-            $stmt_employer->bindParam(':employer_id', $_SESSION['user_id']);
+            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_candidates SET candidate_category = "Prime"
+                            WHERE candidate_id = :candidate_id');
+            $stmt_employer->bindParam(':candidate_id', $_SESSION['user_id']);
             if ($stmt_employer->execute()) {
-                $_SESSION["employer_category"] = NULL;
+                $_SESSION["candidate_category"] = "Prime";
                 header("Location: .");
             } else {
                 $message = 'Sorry, entered values are not correct.';

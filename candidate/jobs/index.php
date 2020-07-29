@@ -17,9 +17,8 @@ where job_status = :job_status
 $job_status = 'Active';
 $jobs_records->bindParam(':job_status', $job_status);
 $jobs_records->execute();
-?>
 
-<?php require_once '../../partials/head-candidate.php' ?>
+ require_once '../../partials/head-candidate.php' ?>
 
 
 <div class="container">

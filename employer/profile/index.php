@@ -1,6 +1,5 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
 
-<?php
 if (!isset($_SESSION['user_id'])) {
   header('Location: ../../login.php');
 }
@@ -8,9 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
   header('Location: /gxc55311/.');
 }
-?>
 
-<?php
 $message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 $employer_data = $conn->prepare('SELECT *
 FROM gxc55311.z_users, gxc55311.z_employers

@@ -1,14 +1,14 @@
 <?php
-
+require_once '../../partials/database.php';
+require_once '../../partials/head-candidate.php'
 ?>
-<?php require_once $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>
         Membership
     </h1>
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-4">
             <div class="card bg-warning">
                 <div class="card-header">
                     <strong>
@@ -20,15 +20,23 @@
                     <h5 class="card-title">20$ / Month</h5>
                     <p class="card-text">
                         <ul>
-                            <li>See all jobs</li>
-                            <li>Apply as many jobs as you want</li>
+                            <li>Apply for unlimited amount of jobs</li>
+
                         </ul>
                     </p>
-                    <a href="./payment.php?membership=gold" class="btn btn-success">Proceed Payment</a>
+                    <?php if ($_SESSION["candidate_category"] != "Gold") { ?>
+                        <a href="./gold.php" class="btn btn-success">Upgrade to Gold</a>
+                    <?php } else if ($_SESSION["candidate_category"] == "Gold") { ?>
+                        <hr>
+                        <h5 class="text-center">
+                            <strong>Gold membership is ACTIVE</strong>
+                        </h5>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="card bg-info text-light">
                 <div class="card-header">
                     <strong>
@@ -38,12 +46,47 @@
                 <div class="card-body">
                     <h5 class="card-title">10$ / Month</h5>
                     <p class="card-text">
-                    <ul>
-                            <li>See all jobs</li>
-                            <li>Apply up to five jobs</li>
+
+                        <ul>
+                            <li>Apply for upto 5 Jobs</li>
                         </ul>
                     </p>
-                    <a href="./payment.php?membership=prime" class="btn btn-success">Proceed Payment</a>
+                    <?php if ($_SESSION["candidate_category"] == "Gold") { ?>
+                        <a href="./prime.php" class="btn btn-danger">Downgrade to Prime</a>
+                    <?php } else if ($_SESSION["candidate_category"] == "Basic") { ?>
+                        <a href="./prime.php" class="btn btn-success">Upgrade to Prime</a>
+                    <?php } else if ($_SESSION["candidate_category"] == "Prime") { ?>
+                        <hr>
+                        <h5 class="text-center">
+                            <strong>Prime membership is ACTIVE</strong>
+                        </h5>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card bg-primary text-light">
+                <div class="card-header">
+                    <strong>
+                        Basic Membership
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Free</h5>
+                    <p class="card-text">
+
+                        <ul>
+                            <li>You only able to see the jobs</li>
+                        </ul>
+                    </p>
+                    <?php if ($_SESSION["candidate_category"] != "Basic") { ?>
+                        <a href="./basic.php" class="btn btn-danger">Downgrade to Basic</a>
+                    <?php } else if ($_SESSION["candidate_category"] == "Basic") { ?>
+                        <hr>
+                        <h5 class="text-center">
+                            <strong>Basic membership is ACTIVE</strong>
+                        </h5>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -57,4 +100,4 @@
 </div>
 
 
-<?php require_once $_SERVER["DOCUMENT_ROOT"].'/comp5531/partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>

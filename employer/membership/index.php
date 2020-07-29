@@ -8,7 +8,7 @@ require_once '../../partials/head-employer.php'
         Membership
     </h1>
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-4">
             <div class="card bg-warning">
                 <div class="card-header">
                     <strong>
@@ -26,14 +26,17 @@ require_once '../../partials/head-employer.php'
                     </p>
                     <?php if ($_SESSION["employer_category"] != "Gold") { ?>
                         <a href="./gold.php" class="btn btn-success">Upgrade to Gold</a>
-                    <?php } else { ?>
-                        <a href="./cancel.php" class="btn btn-danger">Cancel</a>
+                    <?php } else if ($_SESSION["employer_category"] == "Gold") { ?>
+                        <hr>
+                        <h5 class="text-center">
+                            <strong>Gold membership is ACTIVE</strong>
+                        </h5>
                     <?php } ?>
 
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="card bg-info text-light">
                 <div class="card-header">
                     <strong>
@@ -50,10 +53,39 @@ require_once '../../partials/head-employer.php'
                     </p>
                     <?php if ($_SESSION["employer_category"] == "Gold") { ?>
                         <a href="./prime.php" class="btn btn-danger">Downgrade to Prime</a>
-                    <?php } else if ($_SESSION["employer_category"] == "Prime") { ?>
-                        <a href="./cancel.php" class="btn btn-danger">Cancel</a>
-                    <?php } else { ?>
+                    <?php } else if ($_SESSION["employer_category"] == "Basic") { ?>
                         <a href="./prime.php" class="btn btn-success">Upgrade to Prime</a>
+                    <?php } else if ($_SESSION["employer_category"] == "Prime") { ?>
+                        <hr>
+                        <h5 class="text-center">
+                            <strong>Prime membership is ACTIVE</strong>
+                        </h5>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card bg-primary text-light">
+                <div class="card-header">
+                    <strong>
+                        Basic Membership
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Free</h5>
+                    <p class="card-text">
+
+                        <ul>
+                            <li>You will not be able to post a job</li>
+                        </ul>
+                    </p>
+                    <?php if ($_SESSION["employer_category"] != "Basic") { ?>
+                        <a href="./basic.php" class="btn btn-danger">Downgrade to Basic</a>
+                    <?php } else if ($_SESSION["employer_category"] == "Basic") { ?>
+                        <hr>
+                        <h5 class="text-center">
+                            <strong>Basic membership is ACTIVE</strong>
+                        </h5>
                     <?php } ?>
                 </div>
             </div>
@@ -68,4 +100,4 @@ require_once '../../partials/head-employer.php'
 </div>
 
 
-<?php require_once $_SERVER["DOCUMENT_ROOT"] . '/comp5531/partials/foot.php' ?>
+<?php require_once '../../partials/foot.php' ?>
