@@ -1,24 +1,55 @@
 <?php require_once '../../partials/database.php';
 
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
-  header('Location: /gxc55311/.');
+    header('Location: ../../login.php');
+}
+
+$applied_count = $conn->prepare('SELECT COUNT(*)
+FROM gxc55311.z_applications
+WHERE application_candidate_id = :application_candidate_id
+');
+
+$applied_count->bindParam(':application_candidate_id', $_SESSION["user_id"]);
+$applied_count->execute();
+$can_apply = False;
+
+if($_SESSION["candidate_category"] == "Gold"){
+    $can_apply = True;
+} else if($_SESSION["candidate_category"] == "Prime" && $applied_count->fetchColumn() < 1){
+    $can_apply = True;
+} else {
+    $can_apply = False;
 }
 
 $jobs_records = $conn->prepare('SELECT *
 FROM gxc55311.z_jobs
 JOIN gxc55311.z_employers ON job_employer_id = employer_id
-where job_status = :job_status
+WHERE job_status = :job_status
+AND job_title LIKE :job_title
+AND job_id NOT IN (
+    SELECT application_job_id
+    FROM gxc55311.z_applications
+    WHERE application_candidate_id = :application_candidate_id
+)
+ORDER BY job_date_posted DESC
 ');
 
 $job_status = 'Active';
 $jobs_records->bindParam(':job_status', $job_status);
+$jobs_records->bindParam(':application_candidate_id', $_SESSION["user_id"]);
+if (isset($_GET["jobTitle"])) {
+    $job_title = '%' . $_GET["jobTitle"] . '%';
+} else {
+    $job_title = '%%';
+}
+$jobs_records->bindParam(':job_title', $job_title);
 $jobs_records->execute();
 
- require_once '../../partials/head-candidate.php' ?>
+require_once '../../partials/head-candidate.php' ?>
 
 
 <div class="container">
@@ -29,7 +60,7 @@ $jobs_records->execute();
     <div class="card mb-5">
         <div class="card-body">
             <h5 class="card-title">Search</h5>
-            <form>
+            <form method="GET" action=".">
                 <div class="form-row align-items-center">
                     <div class="col-5">
                         <label class="sr-only" for="inlineFormInputGroup">Title Search</label>
@@ -37,7 +68,7 @@ $jobs_records->execute();
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Title Search</div>
                             </div>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="Search">
+                            <input value="<?php  isset($_GET["jobTitle"]) ? $_GET["jobTitle"] : "" ?>" type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Search">
                         </div>
                     </div>
                     <div class="col-5">
@@ -81,10 +112,16 @@ $jobs_records->execute();
                 <h5 class="card-title"><?= $row['job_type'] ?></h5>
                 <h5 class="card-title">Number of Available Positions: <?= $row['job_number_of_positions'] ?></h5>
                 <p class="card-text"><?= $row['job_description'] ?></p>
-                <form method="POST" action="./apply.php">
-                    <input name="jobId" type="hidden" value="<?= $row['job_id'] ?>">
-                    <button class="btn btn-primary btn-block" type="submit">Apply</button>
-                </form>
+                <?php if ($can_apply) { ?>
+                    <form method="POST" action="./apply.php">
+                        <input name="jobId" type="hidden" value="<?= $row['job_id'] ?>">
+                        <button class="btn btn-primary btn-block" type="submit">Apply</button>
+                    </form>
+                <?php } else { ?>
+                    <hr>
+                    <h5 class="text-primary text-center">Upgrade you membership to apply!</h5>
+                <?php } ?>
+
             </div>
         </div>
 

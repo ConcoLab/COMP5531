@@ -1,4 +1,15 @@
-<?php require_once '../../partials/database.php' ?>
+<?php
+require_once '../../partials/database.php';
+
+$user_stmt = $conn->prepare('SELECT *
+FROM gxc55311.z_users
+WHERE user_id = :user_id
+');
+$user_stmt->bindParam(':user_id', $_SESSION['user_id']);
+if ($user_stmt->execute()) {
+  $balance = $user_stmt->fetch(PDO::FETCH_ASSOC)["user_balance"];
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -49,6 +60,13 @@
               <a class="btn btn-info" href="../membership" tabindex="-1" aria-disabled="true">Prime Member</a>
             <?php } else if ($_SESSION["employer_category"] == "Gold") { ?>
               <a class="btn btn-warning" href="../membership" tabindex="-1" aria-disabled="true">Gold Member</a>
+            <?php } ?>
+          </li>
+          <li class="nav-item mr-3">
+            <?php if ($balance > 0) { ?>
+              <a class="btn btn-dark" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance ?></a>
+            <?php } else if ($balance < 0) { ?>
+              <a class="btn btn-danger" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance ?></a>
             <?php } ?>
           </li>
           <li class="nav-item">

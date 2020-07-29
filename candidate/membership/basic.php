@@ -14,7 +14,7 @@ if ($_SESSION["candidate_category"] == "Gold") {
     if ($result) {
         $current_balance = $result['user_balance'];
         echo $current_balance;
-        $balance = $current_balance + (20 / 30) * $days_left;
+        $balance = $current_balance /* + (20 / 30) * $days_left */;
 
         $stmt_user = $conn->prepare('UPDATE gxc55311.z_users SET user_balance = :user_balance
                             WHERE user_id = :user_id');
@@ -43,7 +43,7 @@ if ($_SESSION["candidate_category"] == "Gold") {
     if ($result) {
         $current_balance = $result['user_balance'];
         echo $current_balance;
-        $balance = $current_balance + (10 / 30) * $days_left;
+        $balance = $current_balance /* + (10 / 30) * $days_left*/;
         echo $balance;
         $stmt_user = $conn->prepare('UPDATE gxc55311.z_users SET user_balance = :user_balance
                             WHERE user_id = :user_id');

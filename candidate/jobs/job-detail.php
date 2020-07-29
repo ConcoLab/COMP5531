@@ -44,10 +44,10 @@ if (!empty($_GET['jobId'])) {
             <h5 class="card-title"><?= $result['job_type'] ?></h5>
             <h5 class="card-title">Number of Available Positions: <?= $result['job_number_of_positions'] ?></h5>
             <p class="card-text"><?= $result['job_description'] ?></p>
-            <form method="POST" action="./apply.php">
+            <!-- <form method="POST" action="./apply.php">
                 <input name="jobId" type="hidden" value="<?= $result['job_id'] ?>">
                 <button class="btn btn-primary btn-block" type="submit">Apply</button>
-            </form>
+            </form> -->
         </div>
     </div>
 

@@ -2,11 +2,11 @@
 
 <?php
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /gxc55311/.');
+    header('Location: /gxc55311/.');
 }
 
 ?>
@@ -34,88 +34,77 @@ $jobs_records->execute();
 <?php require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
-
-    <div class="container" >
+    <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-10">
                 <h1>
-                Your Posted Jobs
+                    Your Posted Jobs
                 </h1>
             </div>
-            <div class="col-md-2 offset-md-2">
+            <div class="col-2">
 
                 <form method="POST" action="./new.php">
                     <button class="btn btn-success btn-block" type="submit">Post a Job</button>
                 </form>
             </div>
         </div>
-        <?php
+        <div class="row">
+            <?php
             // display message
-            if(substr($message, 0, strlen("Success")) === "Success") {
-        ?>
-            <div class="alert alert-success" role="alert">
-                <?php echo $message ?>
-            </div>
-        <?php
-            }else if (substr($message, 0, strlen("Error")) === "Error"){
-        ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $message ?>
-            </div>
-        <?php
+            if (substr($message, 0, strlen("Success")) === "Success") {
+            ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $message ?>
+                </div>
+            <?php
+            } else if (substr($message, 0, strlen("Error")) === "Error") {
+            ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $message ?>
+                </div>
+            <?php
             }
-        ?>
-        <form method="POST" action="." class="form-group">
-            <div class="row justify-content-end">
-                <div class="col-md-3">
-                    <label for="date_start"><strong>From:</strong></label>
-                    <input type="date" style="height:100%;" id="date_start" name="date_start">
-                </div>
-                <div class="col-md-3">
-                    <label for="date_end"><strong>To:</strong></label>
-                    <input type="date" style="height:100%" id="date_end" name="date_end">
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-primary btn-block" type="submit">Filter</button>
-                </div>
-            </div>
-        </form>
+            ?>
+        </div>
+
+        <div class="row">
+
+        </div>
+
     </div>
 
-    <!-- <div class="card mb-5">
+    <div class="card mb-5">
         <div class="card-body">
             <h5 class="card-title">Search</h5>
-            <form>
+            <form method="POST" action="." class="form-group col-12">
                 <div class="form-row align-items-center">
                     <div class="col-5">
-                        <label class="sr-only" for="inlineFormInputGroup">Title Search</label>
+                        <label class="sr-only" for="inlineFormInputGroup">From</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">Title Search</div>
+                                <div class="input-group-text">From Search</div>
                             </div>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="Search">
+                            <input value="<?= isset($_POST["date_start"]) ? $_POST["date_start"] : date("Y-m-d") ?>" type="date" class="form-control"  id="date_start" name="date_start" placeholder="Search">
+
                         </div>
                     </div>
                     <div class="col-5">
-                        <label class="sr-only" for="inlineFormInputGroup">Category</label>
+                        <label class="sr-only" for="inlineFormInputGroup">To</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">Category</div>
+                                <div class="input-group-text">To</div>
                             </div>
-                            <select id="category" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>Cat 1</option>
-                                <option>Cat 2</option>
-                            </select>
+                            <input value="<?= isset($_POST["date_end"]) ? $_POST["date_end"] : date("Y-m-d") ?>" type="date" class="form-control"  id="date_end" name="date_end" placeholder="Search">
+
                         </div>
                     </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary btn-block mb-2">Filter</button>
                     </div>
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
     <!-- <div class="card">
         <div class="card-header">
             <h2>
