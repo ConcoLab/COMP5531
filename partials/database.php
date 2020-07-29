@@ -2,7 +2,7 @@
 session_start();
 $server = 'localhost:3306';
 $username = 'root';
-$password = 'root';
+$password = '';
 $database = 'gxc55311';
 
 try {

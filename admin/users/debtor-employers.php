@@ -21,7 +21,7 @@ $jobs_records->execute();
 
 <div class="container">
     <h1>
-        Candidates
+        Debtor Employers
     </h1>
 
     <div class="row">

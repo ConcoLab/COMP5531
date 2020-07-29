@@ -23,6 +23,8 @@
             Users
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../users">All Users</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="../users/admins.php">Admins</a>
             <a class="dropdown-item" href="../users/candidates.php">Candidates</a>
             <a class="dropdown-item" href="../users/employers.php">Employers</a>
@@ -41,6 +43,20 @@
 
             <a class="dropdown-item" href="../jobs/active-jobs.php">Active</a>
             <a class="dropdown-item" href="../jobs/deactive-jobs.php">Deactive</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Memberships
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../membership/gold-employers.php">Gold Employers</a>
+            <a class="dropdown-item" href="../membership/prime-employers.php">Prime Employers</a>
+            <a class="dropdown-item" href="../membership/basic-employers.php">Basic Employers</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="../membership/gold-candidates.php">Gold Candidates</a>
+            <a class="dropdown-item" href="../membership/prime-candidates.php">Prime Candidates</a>
+            <a class="dropdown-item" href="../membership/basic-candidates.php">Basic Candidates</a>
           </div>
         </li>
         <li class="nav-item">

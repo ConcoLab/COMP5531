@@ -19,7 +19,7 @@ $jobs_records->execute();
 
 <div class="container">
     <h1>
-        Candidates
+        Debtor Candidates
     </h1>
 
     <div class="row">

@@ -11,6 +11,7 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
 $jobs_records = $conn->prepare('SELECT *
 FROM gxc55311.z_employers
 JOIN gxc55311.z_users on user_id = employer_id
+WHERE employer_id = "Prime"
 ');
 
 $jobs_records->execute();
@@ -19,7 +20,7 @@ $jobs_records->execute();
 
 <div class="container">
     <h1>
-        Employers
+        Prime Employers
     </h1>
 
     <div class="row">
