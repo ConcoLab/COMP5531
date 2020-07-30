@@ -11,20 +11,34 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
 ?>
 
 <?php
-// check if employer is a Prime Member
-$stmt_prime = $conn->prepare('SELECT COUNT(job_id) >= 5
+$employer_category = "";
+$employer_jobs = 0;
+
+$stmt_category = $conn->prepare('SELECT employer_category, COUNT(job_id) as jobs_posted
                                 FROM gxc55311.z_jobs, gxc55311.z_employers
                                 WHERE job_employer_id = :employer_id AND
-                                employer_category = "Prime" AND
-                                employer_id = job_employer_id;');
-    $stmt_prime->bindParam(':employer_id', $_SESSION['user_id']);
+                                employer_id = job_employer_id
+                                GROUP BY employer_id;');
+    $stmt_category->bindParam(':employer_id', $_SESSION['user_id']);
 
-    $stmt_prime->execute();
-    if($stmt_prime->fetchColumn()){
-        $message = "Error: Prime members can post up to 5 jobs!";
+    if ($stmt_category->execute()){
+        $result = $stmt_category->fetch(PDO::FETCH_ASSOC);
+        $employer_category = $result["employer_category"];
+        $employer_jobs = $result["jobs_posted"];
+    }
+    else{
+        $message = "Error: Something went wrong!";
         header("Location: .?msg=$message");
     }
 
+    if($employer_category == "Basic"){
+        $message = "Error: Basic members cannot post jobs!";
+        header("Location: .?msg=$message");
+    }
+    if($employer_category == "Prime" && $employer_jobs >= 5){
+        $message = "Error: Prime members can post up to 5 jobs!";
+        header("Location: .?msg=$message");
+    }
 ?>
 
 <?php
@@ -155,7 +169,7 @@ $employer_id = $_SESSION['user_id'];
                         </div>
                         <div class="form-group">
                             <label for="positionNumbsers">Number of Positions</label>
-                            <input type="number" name="positionNumbsers" class="form-control" id="positionNumbsers" aria-describedby="positionNumbsersHelp">
+                            <input type="number" name="positionNumbsers" class="form-control" id="positionNumbsers" aria-describedby="positionNumbsersHelp" min=1 max=1000 value=1>
                         </div>
                         <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                     </form>

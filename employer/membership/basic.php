@@ -6,7 +6,7 @@ $diff = date_diff($today, $end);
 $days_left = $diff->d;
 $days_passed = 30 - $days_left;
 if ($_SESSION["employer_category"] == "Gold") {
-    $stmt = $conn->prepare('SELECT * FROM gxc55311.z_users
+    $stmt = $conn->prepare('SELECT user_balance FROM gxc55311.z_users
                             WHERE user_id = :user_id LIMIT 1');
     $stmt->bindParam(':user_id', $_SESSION['user_id']);
     $stmt->execute();
@@ -21,7 +21,7 @@ if ($_SESSION["employer_category"] == "Gold") {
         $stmt_user->bindParam(':user_id', $_SESSION['user_id']);
         $stmt_user->bindParam(':user_balance', $balance);
         if ($stmt->execute()) {
-            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_employers SET employer_category = ""
+            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_employers SET employer_category = "Basic"
                             WHERE employer_id = :employer_id');
             $stmt_employer->bindParam(':employer_id', $_SESSION['user_id']);
             if ($stmt_employer->execute()) {
@@ -50,7 +50,7 @@ if ($_SESSION["employer_category"] == "Gold") {
         $stmt_user->bindParam(':user_id', $_SESSION['user_id']);
         $stmt_user->bindParam(':user_balance', $balance);
         if ($stmt_user->execute()) {
-            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_employers SET employer_category = ""
+            $stmt_employer = $conn->prepare('UPDATE gxc55311.z_employers SET employer_category = "Basic"
                             WHERE employer_id = :employer_id');
             $stmt_employer->bindParam(':employer_id', $_SESSION['user_id']);
             if ($stmt_employer->execute()) {

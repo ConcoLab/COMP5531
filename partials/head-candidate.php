@@ -60,7 +60,7 @@ if($user_stmt->execute()){
 
           </li>
           <li class="nav-item mr-3">
-            <?php if ($balance > 0) { ?>
+            <?php if ($balance >= 0) { ?>
               <a class="btn btn-dark" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance?></a>
             <?php } else if ($balance < 0) { ?>
               <a class="btn btn-danger" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance?></a>

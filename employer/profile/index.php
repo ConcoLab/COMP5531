@@ -69,9 +69,9 @@ $employer = $employer_data->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
                 ?>
 
             </div>
-            <div class="col-auto">
+            <!-- <div class="col-auto">
                     <h2 for="exampleFormControlInput1">Balance: <?= ($employer['user_balance'] >= 0) ? "$".$employer['user_balance'] : "-$".number_format((float)abs($employer['user_balance']),2, '.', '')?></h2>
-            </div>
+            </div> -->
         </div>
     </div>
 
