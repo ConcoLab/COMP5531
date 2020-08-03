@@ -13,6 +13,12 @@ $user_id = $_SESSION['user_id'];
 $category_records->bindParam(':job_category_employer_id', $user_id);
 $category_records->execute();
 
+$stmt_status = $conn->prepare('SELECT user_status
+                                FROM gxc55311.z_users
+                                WHERE user_id = :user_id ;');
+$stmt_status->bindParam(':user_id', $_SESSION['user_id']);
+$stmt_status->execute();
+$status = $stmt_status->fetchColumn();
 
 ?>
 
@@ -29,7 +35,7 @@ $category_records->execute();
             </div>
             <div class="col-auto">
                 <form method="POST" action="./new.php">
-                    <button class="btn btn-success" type="submit">New Category</button>
+                    <button class="btn btn-success" type="submit" <?php if($status != "Active"){ ?> disabled <?php }?>>New Category</button>
                 </form>
             </div>
         </div>

@@ -3,14 +3,10 @@
 
 <?php
 $message = "";
-
-if (empty($_POST['paymentMethod']) || empty($_POST['amount'])){
-    $message = 'Error: Select payment method and enter the amount!';
-}
-else
-{
+$stmt_success = False;
+$balance_success = False;
+if (!empty($_POST['paymentMethod']) && !empty($_POST['amount'])){
     $pay_meth_id = $_POST['paymentMethod'];
-    echo $oay_meth_id;
     $amount = $_POST['amount'];
     $stmt = $conn->prepare('INSERT INTO gxc55311.z_payments
                             (payment_amount, payment_date, payment_method_id)
@@ -19,11 +15,22 @@ else
     $date = date('Y-m-d');
     $stmt->bindParam(':payment_date', $date);
     $stmt->bindParam(':payment_method_id', $pay_meth_id);
-    if ($stmt->execute()) {
-        header("Location: .");
-    } else {
-        $message = 'Sorry, entered values are not correct.';
-    }
+    $stmt_success = $stmt->execute();
+
+    $update_balance = $conn->prepare('UPDATE gxc55311.z_users
+                            SET user_balance = user_balance + :payment_amount,
+                            user_status = CASE WHEN user_balance >= 0 THEN "Active" ELSE user_status END
+                            WHERE user_id = :user_id');
+    $update_balance->bindParam(':payment_amount', $amount);
+    $update_balance->bindParam(':user_id', $_SESSION['user_id']);
+    $balance_success = $update_balance->execute();
+}
+if ($stmt_success && $balance_success) {
+    $message = "Success: Payment for $" . $amount . " has been made!";
+        header("Location: .?msg=$message");
+} else {
+    if (isset($_POST['submit']))
+        $message = 'Error: Payment method and amount required!';
 }
 
 ?>
@@ -57,6 +64,22 @@ $pap_records->execute();
     <h1>
         Make One-Time Payment
     </h1>
+    <?php
+        // display message
+        if(substr($message, 0, strlen("Success")) === "Success") {
+    ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }
+    ?>
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
@@ -111,7 +134,7 @@ $pap_records->execute();
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

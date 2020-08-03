@@ -9,6 +9,12 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
     header('Location: /gxc55311/.');
 }
 
+$stmt_status = $conn->prepare('SELECT user_status
+                                FROM gxc55311.z_users
+                                WHERE user_id = :user_id ;');
+$stmt_status->bindParam(':user_id', $_SESSION['user_id']);
+$stmt_status->execute();
+$status = $stmt_status->fetchColumn();
 ?>
 
 
@@ -44,7 +50,7 @@ $jobs_records->execute();
             <div class="col-2">
 
                 <form method="POST" action="./new.php">
-                    <button class="btn btn-success btn-block" type="submit">Post a Job</button>
+                    <button class="btn btn-success btn-block" type="submit" <?php if($status != "Active"){ ?> disabled <?php }?>>Post a Job</button>
                 </form>
             </div>
         </div>
