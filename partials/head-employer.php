@@ -46,6 +46,9 @@ if ($user_stmt->execute()) {
         <li class="nav-item">
           <a class="nav-link" href="../payment">Payment</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../contact">Contact</a>
+        </li>
       </ul>
 
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
