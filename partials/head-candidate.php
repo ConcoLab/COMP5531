@@ -42,6 +42,9 @@ if($user_stmt->execute()){
           <a class="nav-link" href="../membership">Membership</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="../payment">Payment</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="../contact">Contact</a>
         </li>
       </ul>
