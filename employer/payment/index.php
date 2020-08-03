@@ -76,7 +76,17 @@ $pap_records->execute();
                     <td><?= $row['cc_number'] ?></td>
                     <td><?= $row['cc_type'] ?></td>
                     <td>
-                        <a class="btn btn-outline-primary btn-block" href="#">Set Default</a>
+                        <?php
+                        if($row['payment_method_default']){
+                        ?>
+                            <a class="btn btn-primary btn-block" href="./remove-default.php?id=<?= $row['payment_method_id'] ?>">Remove Default</a>
+                        <?php
+                        } else{
+                        ?>
+                            <a class="btn btn-outline-primary btn-block" href="./set-default.php?id=<?= $row['payment_method_id'] ?>">Set Default</a>
+                        <?php
+                        }
+                        ?>
                     </td>
                     <td>
                         <a href="./edit-credit.php?id=<?= $row['payment_method_id'] ?>" class="btn btn-outline-warning btn-block">Edit</a>
@@ -111,7 +121,19 @@ $pap_records->execute();
                     <th scope="row"> <?= $row_count ?> </th>
                     <td><?= $row['pap_transit_number'] . '-' . $row['pap_institution_number'] . '-' . $row['pap_account_number'] ?></td>
                     <td>
-                    <button class="btn btn-outline-primary btn-block">Set Default</button>
+                    <?php
+                        if($row['payment_method_default']){
+                    ?>
+                            <a class="btn btn-primary btn-block" href="./remove-default.php?id=<?= $row['payment_method_id'] ?>">Remove Default</a>
+                    <?php
+                        } else{
+                    ?>
+                            <a class="btn btn-outline-primary btn-block" href="./set-default.php?id=<?= $row['payment_method_id'] ?>">Set Default</a>
+                    <?php
+                        }
+                    ?>
+<!--
+                    <button class="btn btn-outline-primary btn-block">Set Default</button> -->
 
                     </td>
                     <td>
