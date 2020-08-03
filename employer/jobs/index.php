@@ -143,7 +143,7 @@ $jobs_records->execute();
 
                         <tr>
                             <td><?= $row_count ?></td>
-                            <td><?= $row['job_title'] ?></td>
+                            <td><div title="<?= substr($row['job_description'],0,49) ?>"><?= $row['job_title'] ?></div></td>
                             <td><?= $row['job_location'] ?></td>
                             <td><?= $row['job_type'] ?></td>
                             <td><?= $row['job_date_posted'] ?></td>

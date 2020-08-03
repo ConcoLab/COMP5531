@@ -99,7 +99,7 @@ require_once '../../partials/head-candidate.php' ?>
             <div class="card-header">
                 <h2>
                     <strong>
-                        <?= $row['job_title'] ?>
+                        <td><div title="<?= substr($row['job_description'],0,49) ?>"><?= $row['job_title'] ?></div></td>
                     </strong>
                     at
                     <strong>
