@@ -49,22 +49,25 @@ $jobs_records->execute();
             </div>
         </div>
         <div class="row">
-            <?php
-            // display message
-            if (substr($message, 0, strlen("Success")) === "Success") {
-            ?>
-                <div class="alert alert-success" role="alert">
-                    <?php echo $message ?>
-                </div>
-            <?php
-            } else if (substr($message, 0, strlen("Error")) === "Error") {
-            ?>
-                <div class="alert alert-danger" role="alert">
-                    <?php echo $message ?>
-                </div>
-            <?php
-            }
-            ?>
+            <div class="col-12">
+                <?php
+                // display message
+                if (substr($message, 0, strlen("Success")) === "Success") {
+                ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $message ?>
+                    </div>
+                <?php
+                } else if (substr($message, 0, strlen("Error")) === "Error") {
+                ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $message ?>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+
         </div>
 
         <div class="row">
@@ -84,7 +87,7 @@ $jobs_records->execute();
                             <div class="input-group-prepend">
                                 <div class="input-group-text">From Search</div>
                             </div>
-                            <input value="<?= isset($_POST["date_start"]) ? $_POST["date_start"] : date("Y-m-d") ?>" type="date" class="form-control"  id="date_start" name="date_start" placeholder="Search">
+                            <input value="<?= isset($_POST["date_start"]) ? $_POST["date_start"] : date("Y-m-d") ?>" type="date" class="form-control" id="date_start" name="date_start" placeholder="Search">
 
                         </div>
                     </div>
@@ -94,7 +97,7 @@ $jobs_records->execute();
                             <div class="input-group-prepend">
                                 <div class="input-group-text">To</div>
                             </div>
-                            <input value="<?= isset($_POST["date_end"]) ? $_POST["date_end"] : date("Y-m-d") ?>" type="date" class="form-control"  id="date_end" name="date_end" placeholder="Search">
+                            <input value="<?= isset($_POST["date_end"]) ? $_POST["date_end"] : date("Y-m-d") ?>" type="date" class="form-control" id="date_end" name="date_end" placeholder="Search">
 
                         </div>
                     </div>
