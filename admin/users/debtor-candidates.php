@@ -11,6 +11,8 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
 $jobs_records = $conn->prepare('SELECT *
 FROM gxc55311.z_candidates
 JOIN gxc55311.z_users on user_id = candidate_id
+WHERE user_balance < 0
+ORDER BY user_balance DESC
 ');
 
 $jobs_records->execute();
@@ -33,6 +35,7 @@ $jobs_records->execute();
                         <th>Phone</th>
                         <th>Status</th>
                         <th>Balance</th>
+                        <th>Frozen From</th>
                         <th colspan="1">Actions</th>
                     </tr>
                 </thead>
@@ -49,10 +52,11 @@ $jobs_records->execute();
                             <td><?= $row['user_phone'] ?></td>
                             <td><?= $row['user_status'] ?></td>
                             <td><?= $row['user_balance'] ?></td>
+                            <td><?= $row['user_frozen_from'] ?></td>
 
                             <td>
                                 <?php
-                                if ($row['user_status'] == 'Active') { ?>
+                                if ($row['user_status'] == 'Active' || $row['user_status'] == 'Suffering') { ?>
 
                                     <form method="POST" action="./deactivate.php">
                                         <input name="id" type="hidden" value="<?= $row['user_id'] ?>">

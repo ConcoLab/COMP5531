@@ -16,7 +16,7 @@ if (!empty($_POST['id'])) {
     $stmt->bindParam(':user_status', $user_status);
 
     if ($stmt->execute()) {
-        header("Location: ./admins.php");
+        header("Location: .");
     } else {
         $message = 'Sorry, entered values are not correct.';
     }
