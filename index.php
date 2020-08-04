@@ -1,6 +1,6 @@
 <?php
 require_once './partials/database.php';
-require_once './partials/head-public.php';
+// require_once './partials/head-public.php';
 if(isset($_SESSION["is_candidate"]) && $_SESSION["is_candidate"]){
   header("Location: ./candidate/jobs");
 }else if (isset($_SESSION["is_employer"]) && $_SESSION["is_employer"]){
