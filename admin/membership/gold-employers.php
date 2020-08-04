@@ -11,7 +11,7 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
 $jobs_records = $conn->prepare('SELECT *
 FROM gxc55311.z_employers
 JOIN gxc55311.z_users on user_id = employer_id
-WHERE employer_id = "Gold"
+WHERE employer_category LIKE "%Gold%"
 ');
 
 $jobs_records->execute();
