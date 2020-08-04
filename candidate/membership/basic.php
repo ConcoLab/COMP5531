@@ -64,3 +64,4 @@ if ($_SESSION["candidate_category"] == "Gold") {
         }
     }
 }
+?>

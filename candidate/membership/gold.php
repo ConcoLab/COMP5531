@@ -68,3 +68,4 @@ if ($_SESSION["candidate_category"] != "Gold" && $_SESSION["candidate_category"]
         }
     }
 }
+?>
