@@ -1,20 +1,14 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../login.php');
+}
 
-<?php
+if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
+    header('Location: ../../login.php');
+}
+
 if (!empty($_GET['candidateId']) && !empty($_GET['jobId'])) {
 
-    // $application_record = $conn->prepare('SELECT *
-    // FROM applications
-    // WHERE application_job_id = :application_job_id
-    // AND application_candidate_id = :application_candidate_id
-    // ');
-    // $job_id = $_GET['jobId'];
-    // $candidate_id = $_GET['candidateId'];
-    // $application_record->bindParam(':application_candidate_id', $candidate_id);
-    // $application_record->bindParam(':application_job_id', $jobId);
-    // if (!$application_record->execute() && $application_record['job_employer_id'] != $_SESSION['user_id']) {
-    //     header("Location: .");
-    // }
 
 
     $application_record = $conn->prepare('SELECT *

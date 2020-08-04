@@ -1,5 +1,13 @@
 <?php
 require_once '../../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../login.php');
+}
+
+if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
+    header('Location: ../../login.php');
+}
+
 $today = new DateTime(date('Y-m-d'));
 $end = new DateTime(date('Y-m-t'));
 $diff = date_diff($today, $end);

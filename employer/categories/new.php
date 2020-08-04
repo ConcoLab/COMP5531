@@ -1,11 +1,11 @@
-<?php require_once '../../partials/database.php' ?>
-<?php
+<?php require_once '../../partials/database.php';
+
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /gxc55311/.');
+    header('Location: ../../login.php');
 }
 $stmt_status = $conn->prepare('SELECT user_status
                                 FROM gxc55311.z_users
@@ -13,7 +13,7 @@ $stmt_status = $conn->prepare('SELECT user_status
 $stmt_status->bindParam(':user_id', $_SESSION['user_id']);
 $stmt_status->execute();
 $status = $stmt_status->fetchColumn();
-if($status != "Active"){
+if ($status != "Active") {
     $message = $message = "Error: Only active users can create categories!";
     header("Location: .?msg=$message");
 }
@@ -35,11 +35,10 @@ if (!empty($_POST['name'])) {
         $message = 'Error: Category hasn\'t been added!';
     }
     header("Location: .?msg=$message");
+} else {
+    if (isset($_POST['submit']))
+        $message = 'Error: Name cannot be empty!';
 }
-else {
-        if (isset($_POST['submit']))
-            $message = 'Error: Name cannot be empty!';
-    }
 ?>
 
 
@@ -50,20 +49,20 @@ else {
         Create Job Category
     </h1>
     <?php
-        // display message
-        if(substr($message, 0, strlen("Success")) === "Success") {
+    // display message
+    if (substr($message, 0, strlen("Success")) === "Success") {
     ?>
         <div class="alert alert-success" role="alert">
             <?php echo $message ?>
         </div>
     <?php
-        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    } else if (substr($message, 0, strlen("Error")) === "Error") {
     ?>
         <div class="alert alert-danger" role="alert">
             <?php echo $message ?>
         </div>
     <?php
-        }
+    }
     ?>
     <div class="row mb-4">
         <div class="col-12">

@@ -1,7 +1,12 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../login.php');
+}
 
+if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
+    header('Location: ../../login.php');
+}
 
-<?php
 $message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 
 $category_records = $conn->prepare('SELECT *
@@ -35,27 +40,27 @@ $status = $stmt_status->fetchColumn();
             </div>
             <div class="col-auto">
                 <form method="POST" action="./new.php">
-                    <button class="btn btn-success" type="submit" <?php if($status != "Active"){ ?> disabled <?php }?>>New Category</button>
+                    <button class="btn btn-success" type="submit" <?php if ($status != "Active") { ?> disabled <?php } ?>>New Category</button>
                 </form>
             </div>
         </div>
     </div>
 
     <?php
-        // display message
-        if(substr($message, 0, strlen("Success")) === "Success") {
+    // display message
+    if (substr($message, 0, strlen("Success")) === "Success") {
     ?>
         <div class="alert alert-success" role="alert">
             <?php echo $message ?>
         </div>
     <?php
-        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    } else if (substr($message, 0, strlen("Error")) === "Error") {
     ?>
         <div class="alert alert-danger" role="alert">
             <?php echo $message ?>
         </div>
     <?php
-        }
+    }
     ?>
 
     <div class="row">

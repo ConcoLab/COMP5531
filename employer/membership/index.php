@@ -1,5 +1,13 @@
 <?php
 require_once '../../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../login.php');
+}
+
+if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
+    header('Location: ../../login.php');
+}
+
 require_once '../../partials/head-employer.php'
 ?>
 
