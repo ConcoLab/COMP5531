@@ -28,7 +28,7 @@ if (!empty($_POST['paymentMethod']) && !empty($_POST['amount'])){
     $email = $conn->prepare('INSERT INTO gxc55311.z_emails
     (email_user_id, email_subject, email_body)
     VALUES (:email_user_id, "Payment Notification", :email_body)');
-    $email_body = "Your payment is done: " . $_POST['amount'] . "$";
+    $email_body = "Manual payment of $". $_POST['amount'] . " has been made.";
     $email->bindParam(':email_user_id', $_SESSION['user_id']);
     $email->bindParam(':email_body', $email_body);
     $email->execute();
