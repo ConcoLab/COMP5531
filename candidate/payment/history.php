@@ -26,7 +26,7 @@ $payment_records->execute();
 
 <div class="container">
     <h1>
-        Employers Payments
+        Candidate Payments
     </h1>
 
     <div class="row">

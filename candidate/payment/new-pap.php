@@ -11,7 +11,7 @@ if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
 $message = '';
 
 if (!empty($_POST['transit']) && !empty($_POST['institution']) && !empty($_POST['account'])) {
-    $stmt = $conn->prepare('INSERT INTO gxc55311.z_payment_methods (payment_method_user_id) VALUE (:payment_method_user_id)');
+    $stmt = $conn->prepare('INSERT INTO gxc55311.z_payment_methods (payment_method_user_id) VALUES (:payment_method_user_id)');
     $user_id = $_SESSION["user_id"];
     $stmt->bindParam(':payment_method_user_id', $user_id);
 
