@@ -20,7 +20,9 @@ $message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 $date_start = (empty($_POST['date_start'])) ? date('0-0-0') : $_POST['date_start'];
 $date_end = (empty($_POST['date_end'])) ? date('Y-m-d') : $_POST['date_end'];
 
-$jobs_records = $conn->prepare('SELECT *
+$jobs_records = $conn->prepare('SELECT *, (
+                                SELECT COUNT(*) FROM gxc55311.z_applications WHERE application_job_id = job_id AND application_status LIKE "%CandidateAccepted%"
+                            ) as accepted_count
                             FROM gxc55311.z_jobs
                             where job_employer_id = :job_employer_id AND
                             job_date_posted >= :date_start AND
@@ -133,6 +135,7 @@ $jobs_records->execute();
                         <th>Type</th>
                         <th>Date</th>
                         <th>Status</th>
+                        <th>Accepted</th>
                         <th colspan="4">Actions</th>
                     </tr>
                 </thead>
@@ -148,6 +151,8 @@ $jobs_records->execute();
                             <td><?= $row['job_location'] ?></td>
                             <td><?= $row['job_type'] ?></td>
                             <td><?= $row['job_date_posted'] ?></td>
+                            <td><?= $row['job_date_posted'] ?></td>
+                            <td><?= $row['accepted_count'] ?></td>
                             <td>
                                 <?php
                                 if ($row['job_status'] == 'Active') {
