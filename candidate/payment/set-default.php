@@ -1,6 +1,12 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../login.php');
+}
 
-<?php
+if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
+    header('Location: ../../login.php');
+}
+
 $message = '';
 $message = '';
 $payment_method_id = $_GET['id'];

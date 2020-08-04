@@ -1,6 +1,12 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../login.php');
+}
 
-<?php
+if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
+    header('Location: ../../login.php');
+}
+
 $message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 $cc_records = $conn->prepare('SELECT *
                             FROM gxc55311.z_payment_methods
