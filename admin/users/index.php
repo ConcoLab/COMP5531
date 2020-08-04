@@ -50,7 +50,7 @@ $jobs_records->execute();
 
                             <td>
                                 <?php
-                                if ($row['user_status'] == 'Active') { ?>
+                                if ($row['user_status'] == 'Active' || $row['user_status'] == 'Suffering') { ?>
 
                                     <form method="POST" action="./deactivate.php">
                                         <input name="id" type="hidden" value="<?= $row['user_id'] ?>">
