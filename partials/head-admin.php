@@ -59,8 +59,16 @@
             <a class="dropdown-item" href="../membership/basic-candidates.php">Basic Candidates</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./payments.php">Payments</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Payments
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../payments">Payment Panel</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="../payments/employers.php">Employers Report</a>
+            <a class="dropdown-item" href="../payments/candidates.php">Candidates Report</a>
+          </div>
         </li>
       </ul>
 
