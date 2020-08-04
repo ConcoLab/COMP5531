@@ -74,6 +74,9 @@ require_once './partials/head-public.php';
       <label for="password">Password</label>
       <input type="password" name="password" class="form-control" id="password">
     </div>
+    <div class="form-group">
+      <a href="./forget-password.php">Forgot your password?</a>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
