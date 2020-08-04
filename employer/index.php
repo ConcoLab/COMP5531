@@ -8,6 +8,6 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
     header('Location: ../index.php');
 }
 
-header('Location: profile/');
+header('Location: jobs/');
 
 
