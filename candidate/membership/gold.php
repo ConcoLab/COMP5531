@@ -1,14 +1,12 @@
 <?php
 require_once '../../partials/database.php';
 
-echo $_SESSION['user_id'];
 $today = new DateTime(date('Y-m-d'));
 $end = new DateTime(date('Y-m-t'));
 $diff = date_diff($today, $end);
 $days_left = $diff->d;
 $days_passed = 30 - $days_left;
 
-echo $_SESSION["candidate_category"];
 if ($_SESSION["candidate_category"] != "Gold" && $_SESSION["candidate_category"] != "Prime") {
     $stmt = $conn->prepare('SELECT * FROM gxc55311.z_users
                             WHERE user_id = :user_id LIMIT 1');
@@ -17,7 +15,6 @@ if ($_SESSION["candidate_category"] != "Gold" && $_SESSION["candidate_category"]
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result) {
         $current_balance = $result['user_balance'];
-        echo $current_balance;
         $balance = $current_balance - (20 / 30) * $days_left;
 
         $stmt_user = $conn->prepare('UPDATE gxc55311.z_users SET user_balance = :user_balance
