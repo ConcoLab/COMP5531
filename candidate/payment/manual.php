@@ -24,6 +24,14 @@ if (!empty($_POST['paymentMethod']) && !empty($_POST['amount'])){
     $update_balance->bindParam(':payment_amount', $amount);
     $update_balance->bindParam(':user_id', $_SESSION['user_id']);
     $balance_success = $update_balance->execute();
+
+    $email = $conn->prepare('INSERT INTO gxc55311.z_emails
+    (email_user_id, email_subject, email_body)
+    VALUES (:email_user_id, "Payment Notification", :email_body)');
+    $email_body = "Your payment is done: " . $_POST['amount'] . "$";
+    $email->bindParam(':email_user_id', $_SESSION['user_id']);
+    $email->bindParam(':email_body', $email_body);
+    $email->execute();
 }
 if ($stmt_success && $balance_success) {
     $message = "Success: Payment of $" . $amount . " has been made!";
