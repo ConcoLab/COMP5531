@@ -9,10 +9,6 @@ if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
     header('Location: ../../login.php');
 }
 
-require_once '../../partials/head-candidate.php';
-?>
-
-<?php
 $message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 $candidate_data = $conn->prepare('SELECT *
 FROM gxc55311.z_users, gxc55311.z_candidates
@@ -24,6 +20,8 @@ $candidate_data->bindParam(':candidate_id', $user_id);
 $candidate_data->execute();
 
 $candidate = $candidate_data->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
+
+require_once '../../partials/head-candidate.php';
 ?>
 
 <div class="container">
