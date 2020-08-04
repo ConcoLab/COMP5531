@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
-    header('Location: ../../.');
+    header('Location: ../../login.php');
 }
 
 $job_records = $conn->prepare('SELECT *

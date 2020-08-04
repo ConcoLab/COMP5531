@@ -1,15 +1,12 @@
-<?php require_once '../../partials/database.php' ?>
-<?php
+<?php require_once '../../partials/database.php';
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /gxc55311/.');
+    header('Location: ../../login.php');
 }
 
-?>
-<?php
 $message = '';
 $job_id = $_POST['job_id'];
 $job_success = False;

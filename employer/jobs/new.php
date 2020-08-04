@@ -1,12 +1,12 @@
-<?php require_once '../../partials/database.php' ?>
-<?php
+<?php require_once '../../partials/database.php';
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /gxc55311/.');
+    header('Location: ../../login.php');
 }
+
 $stmt_status = $conn->prepare('SELECT user_status
                                 FROM gxc55311.z_users
                                 WHERE user_id = :user_id ;');

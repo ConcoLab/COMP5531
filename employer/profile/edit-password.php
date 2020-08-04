@@ -1,15 +1,12 @@
-<?php require_once '../../partials/database.php' ?>
-<?php
+<?php require_once '../../partials/database.php';
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /gxc55311/.');
+    header('Location: ../../login.php');
 }
 
-?>
-<?php
 $message = "";
 $user_id = $_SESSION['user_id'];
 if (!empty($_POST['old_password']) && !empty($_POST['new_password1']) && !empty($_POST['new_password2'])) {

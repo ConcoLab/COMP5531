@@ -1,12 +1,11 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
 
-<?php
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-    header('Location: /gxc55311/.');
+    header('Location: ../../login.php');
 }
 
 $stmt_status = $conn->prepare('SELECT user_status
@@ -15,10 +14,7 @@ $stmt_status = $conn->prepare('SELECT user_status
 $stmt_status->bindParam(':user_id', $_SESSION['user_id']);
 $stmt_status->execute();
 $status = $stmt_status->fetchColumn();
-?>
 
-
-<?php
 $message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 
 $date_start = (empty($_POST['date_start'])) ? date('0-0-0') : $_POST['date_start'];

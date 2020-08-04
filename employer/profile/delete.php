@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
-  header('Location: /gxc55311/.');
+  header('Location: ../../login.php');
 }
 
 $stmt = $conn->prepare('DELETE FROM gxc55311.z_users
