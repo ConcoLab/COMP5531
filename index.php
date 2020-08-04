@@ -9,7 +9,7 @@ if(isset($_SESSION["is_candidate"]) && $_SESSION["is_candidate"]){
   header("Location: ./admin");
 }
 ?>
-
+<!--
 <div class="container">
   <div class="row">
     <?php if (isset($_SESSION['user_id'])) { ?>
@@ -95,4 +95,4 @@ if(isset($_SESSION["is_candidate"]) && $_SESSION["is_candidate"]){
 </div>
 
 
-<?php require_once './partials/foot.php' ?>
+<?php require_once './partials/foot.php' ?> -->
