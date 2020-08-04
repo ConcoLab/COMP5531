@@ -36,6 +36,7 @@ $job_records->execute();
                         <th>#</th>
                         <th>Title</th>
                         <th>Company Name</th>
+                        <th>Date Applied</th>
                         <th>Status</th>
                         <th colspan="4">Actions</th>
                     </tr>
@@ -48,8 +49,9 @@ $job_records->execute();
 
                         <tr>
                             <td><?= $row_count ?></td>
-                            <td><?= $row['job_title'] ?></td>
+                            <td><div title="<?= substr($row['job_description'],0,49) ?>"><?= $row['job_title'] ?></div></td>
                             <td><?= $row['employer_name'] ?></td>
+                            <td><?= $row['application_date'] ?></td>
                             <td>
                                 <?php
                                 if ($row['application_status'] == 'Processing') {

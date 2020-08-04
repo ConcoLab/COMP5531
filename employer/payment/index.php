@@ -1,6 +1,7 @@
 <?php require_once '../../partials/database.php' ?>
 
 <?php
+$message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 $cc_records = $conn->prepare('SELECT *
                             FROM gxc55311.z_payment_methods
                             join gxc55311.z_credit_cards on cc_payment_method_id = payment_method_id
@@ -29,15 +30,29 @@ $pap_records->execute();
     <h1>
         Payment
     </h1>
-
+    <?php
+        // display message
+        if(substr($message, 0, strlen("Success")) === "Success") {
+    ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }
+    ?>
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Authorization</h5>
-                    <p class="card-text">You can authorize us to charge you monthly on your membership plan</p>
-                    <a href="#" class="btn btn-success">Authorize</a>
-                    <a href="#" class="btn btn-danger">Withdraw Authorization</a>
+                    <p class="card-text">By setting a default payment method you authorize us to charge your payment method of choice on a monthly basis.</p>
+                    <a href="./remove-default.php" class="btn btn-danger">Withdraw Authorization</a>
                 </div>
             </div>
         </div>

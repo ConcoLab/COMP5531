@@ -1,12 +1,7 @@
-<?php require_once '../../partials/database.php';
+<?php require_once '../../partials/database.php' ?>
 
-if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
-}
-
-if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
-  header('Location: /gxc55311/.');
-}
+<?php
+$message = !empty($_GET['msg']) ? $_GET['msg'] : "";
 $cc_records = $conn->prepare('SELECT *
                             FROM gxc55311.z_payment_methods
                             join gxc55311.z_credit_cards on cc_payment_method_id = payment_method_id
@@ -30,19 +25,34 @@ $pap_records->execute();
 
 <?php require_once '../../partials/head-candidate.php' ?>
 
+
 <div class="container">
     <h1>
         Payment
     </h1>
-
+    <?php
+        // display message
+        if(substr($message, 0, strlen("Success")) === "Success") {
+    ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }else if (substr($message, 0, strlen("Error")) === "Error"){
+    ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $message ?>
+        </div>
+    <?php
+        }
+    ?>
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Authorization</h5>
-                    <p class="card-text">You can authorize us to charge you monthly on your membership plan</p>
-                    <a href="#" class="btn btn-success">Authorize</a>
-                    <a href="#" class="btn btn-danger">Withdraw Authorization</a>
+                    <p class="card-text">By setting a default payment method you authorize us to charge your payment method of choice on a monthly basis.</p>
+                    <a href="./remove-default.php" class="btn btn-danger">Withdraw Authorization</a>
                 </div>
             </div>
         </div>
@@ -81,7 +91,17 @@ $pap_records->execute();
                     <td><?= $row['cc_number'] ?></td>
                     <td><?= $row['cc_type'] ?></td>
                     <td>
-                        <a class="btn btn-outline-primary btn-block" href="#">Set Default</a>
+                        <?php
+                        if($row['payment_method_default']){
+                        ?>
+                            <a class="btn btn-primary btn-block" href="./remove-default.php?id=<?= $row['payment_method_id'] ?>">Remove Default</a>
+                        <?php
+                        } else{
+                        ?>
+                            <a class="btn btn-outline-primary btn-block" href="./set-default.php?id=<?= $row['payment_method_id'] ?>">Set Default</a>
+                        <?php
+                        }
+                        ?>
                     </td>
                     <td>
                         <a href="./edit-credit.php?id=<?= $row['payment_method_id'] ?>" class="btn btn-outline-warning btn-block">Edit</a>
@@ -116,7 +136,19 @@ $pap_records->execute();
                     <th scope="row"> <?= $row_count ?> </th>
                     <td><?= $row['pap_transit_number'] . '-' . $row['pap_institution_number'] . '-' . $row['pap_account_number'] ?></td>
                     <td>
-                    <button class="btn btn-outline-primary btn-block">Set Default</button>
+                    <?php
+                        if($row['payment_method_default']){
+                    ?>
+                            <a class="btn btn-primary btn-block" href="./remove-default.php?id=<?= $row['payment_method_id'] ?>">Remove Default</a>
+                    <?php
+                        } else{
+                    ?>
+                            <a class="btn btn-outline-primary btn-block" href="./set-default.php?id=<?= $row['payment_method_id'] ?>">Set Default</a>
+                    <?php
+                        }
+                    ?>
+<!--
+                    <button class="btn btn-outline-primary btn-block">Set Default</button> -->
 
                     </td>
                     <td>

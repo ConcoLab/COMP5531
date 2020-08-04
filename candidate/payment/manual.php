@@ -58,7 +58,7 @@ $pap_records->execute();
 ?>
 
 
-<?php require_once '../../partials/head-employer.php' ?>
+<?php require_once '../../partials/head-candidate.php' ?>
 
 <div class="container">
     <h1>
