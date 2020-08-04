@@ -11,8 +11,8 @@ if (!isset($_SESSION['is_candidate']) && !$_SESSION['is_candidate']) {
 $payment_records = $conn->prepare('SELECT *
 FROM gxc55311.z_payments as p
 JOIN gxc55311.z_payment_methods as pm ON p.payment_method_id = pm.payment_method_id
-JOIN gxc55311.z_employers ON employer_id = payment_method_user_id
-JOIN gxc55311.z_users on user_id = employer_id
+JOIN gxc55311.z_candidates ON candidate_id = payment_method_user_id
+JOIN gxc55311.z_users on user_id = candidate_id
 WHERE user_id = :user_id;
 ');
 
