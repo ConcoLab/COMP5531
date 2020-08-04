@@ -8,14 +8,14 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
   header('Location: ../../login.php');
 }
 
-$jobs_records = $conn->prepare('SELECT *
+$payment_records = $conn->prepare('SELECT *
 FROM gxc55311.z_payments as p
 JOIN gxc55311.z_payment_methods as pm ON p.payment_method_id = pm.payment_method_id
 JOIN gxc55311.z_candidates ON candidate_id = payment_method_user_id
 JOIN gxc55311.z_users on user_id = candidate_id;
 ');
 
-$jobs_records->execute();
+$payment_records->execute();
 ?>
 <?php require_once '../../partials/head-admin.php' ?>
 
@@ -42,7 +42,7 @@ $jobs_records->execute();
                 <tbody>
                     <?php
                     $row_count = 1;
-                    while ($row = $jobs_records->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+                    while ($row = $payment_records->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
                     ?>
 
                         <tr>

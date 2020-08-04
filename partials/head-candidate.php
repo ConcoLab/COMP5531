@@ -6,7 +6,7 @@ FROM gxc55311.z_users
 WHERE user_id = :user_id
 ');
 $user_stmt->bindParam(':user_id', $_SESSION['user_id']);
-if($user_stmt->execute()){
+if ($user_stmt->execute()) {
   $balance = $user_stmt->fetch(PDO::FETCH_ASSOC)["user_balance"];
 }
 ?>
@@ -41,8 +41,14 @@ if($user_stmt->execute()){
         <li class="nav-item">
           <a class="nav-link" href="../membership">Membership</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../payment">Payment</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Payments
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../payment">Settings</a>
+            <a class="dropdown-item" href="../payment/history.php">History</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../contact">Contact</a>
@@ -67,9 +73,9 @@ if($user_stmt->execute()){
           </li>
           <li class="nav-item mr-3">
             <?php if ($balance >= 0) { ?>
-              <a class="btn btn-dark" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance?></a>
+              <a class="btn btn-dark" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance ?></a>
             <?php } else if ($balance < 0) { ?>
-              <a class="btn btn-danger" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance?></a>
+              <a class="btn btn-danger" href="../payment" tabindex="-1" aria-disabled="true">Balance: <?= $balance ?></a>
             <?php } ?>
           </li>
         </ul>

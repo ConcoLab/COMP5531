@@ -43,8 +43,14 @@ if ($user_stmt->execute()) {
         <li class="nav-item">
           <a class="nav-link" href="../membership">Membership</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../payment">Payment</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Payments
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../payment">Settings</a>
+            <a class="dropdown-item" href="../payment/history.php">History</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../contact">Contact</a>

@@ -2,12 +2,12 @@
 require_once '../partials/database.php';
 require_once '../partials/head-public.php';
 
-$jobs_records = $conn->prepare('SELECT *
+$email_records = $conn->prepare('SELECT *
 FROM gxc55311.z_emails
 JOIN gxc55311.z_users on user_id = email_user_id;
 ');
 
-$jobs_records->execute();
+$email_records->execute();
 ?>
 <div class="container">
     <h1>
@@ -29,7 +29,7 @@ $jobs_records->execute();
                 <tbody>
                     <?php
                     $row_count = 1;
-                    while ($row = $jobs_records->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
+                    while ($row = $email_records->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {
                     ?>
 
                         <tr>
