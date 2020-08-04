@@ -35,6 +35,7 @@ $jobs_records->execute();
                         <th>Phone</th>
                         <th>Status</th>
                         <th>Balance</th>
+                        <th>Frozen From</th>
                         <th colspan="1">Actions</th>
                     </tr>
                 </thead>
@@ -51,7 +52,7 @@ $jobs_records->execute();
                             <td><?= $row['user_phone'] ?></td>
                             <td><?= $row['user_status'] ?></td>
                             <td><?= $row['user_balance'] ?></td>
-
+                            <td><?= $row['user_frozen_from'] ?></td>
                             <td>
                                 <?php
                                 if ($row['user_status'] == 'Active') { ?>
