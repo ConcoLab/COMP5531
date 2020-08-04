@@ -1,11 +1,11 @@
 <?php require_once '../../partials/database.php';
 
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 $jobs_records = $conn->prepare('SELECT *
@@ -60,7 +60,7 @@ $jobs_records->execute();
                                         <button class="btn btn-outline-danger btn-block" type="submit">Deactivate</button>
                                     </form>
                                 <?php
-                                } else if($row['user_status'] == 'Deactive') {
+                                } else if ($row['user_status'] == 'Deactive') {
                                 ?>
                                     <form method="POST" action="./activate.php">
                                         <input name="id" type="hidden" value="<?= $row['user_id'] ?>">

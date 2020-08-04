@@ -1,11 +1,11 @@
 <?php require_once '../../partials/database.php';
 
 if (!isset($_SESSION['user_id'])) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
-  header('Location: ../../login.php');
+    header('Location: ../../login.php');
 }
 
 $payment_records = $conn->prepare('SELECT *

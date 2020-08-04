@@ -1,9 +1,11 @@
-<?php require_once '../../partials/database.php' ?>
+<?php require_once '../../partials/database.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../login.php');
+  }
 
-
-<?php
-
-
+  if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
+    header('Location: ../../login.php');
+  }
 
 if (!empty($_GET['id'])) {
 
@@ -29,8 +31,6 @@ if (!empty($_GET['id'])) {
         header("Location: .");
     }
 }
-
-
 ?>
 
 <?php require_once '../../partials/head-admin.php' ?>
