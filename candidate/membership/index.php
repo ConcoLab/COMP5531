@@ -85,7 +85,7 @@ require_once '../../partials/head-candidate.php'
                     <p class="card-text">
 
                         <ul>
-                            <li>You only able to see the jobs</li>
+                            <li>You are only able to see the jobs</li>
                         </ul>
                     </p>
                     <?php if ($_SESSION["candidate_category"] != "Basic") { ?>
