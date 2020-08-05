@@ -96,11 +96,16 @@ if (!empty($_POST['title'])
     }
 
 $employer_id = $_SESSION['user_id'];
-    $categories = $conn->prepare('SELECT job_category_id, job_category_name
+    $general_categories = $conn->prepare('SELECT *
                             FROM gxc55311.z_job_categories
-                            WHERE job_category_employer_id = :employer_id OR job_category_employer_id IS NULL');
-    $categories->bindParam(':employer_id', $employer_id);
-    $categories->execute();
+                            WHERE job_category_employer_id IS NULL');
+    $general_categories->execute();
+
+    $specific_categories = $conn->prepare('SELECT *
+                            FROM gxc55311.z_job_categories
+                            WHERE job_category_employer_id = :employer_id');
+    $specific_categories->bindParam(':employer_id', $employer_id);
+    $specific_categories->execute();
 
 require_once '../../partials/head-employer.php' ?>
 
@@ -154,12 +159,20 @@ require_once '../../partials/head-employer.php' ?>
 
                             <select name="job_categories[]" class="custom-select" multiple>
                                 <?php
-                                    while ($category = $categories->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+                                    echo '<optgroup label="General Categories">';
+                                    while ($category = $general_categories->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
                                 ?>
-
-                                <option value=<?= $category['job_category_id'] ?>><?= $category['job_category_name'] ?></option>
+                                    <option value=<?= $category['job_category_id'] ?>><?= $category['job_category_name'] ?></option>
                                 <?php
                                     }
+                                    echo '</optgroup>';
+                                    echo '<optgroup label="Your Categories">';
+                                    while ($category = $specific_categories->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)){
+                                ?>
+                                        <option value=<?= $category['job_category_id'] ?>><?= $category['job_category_name'] ?></option>
+                                <?php
+                                    }
+                                    echo '</optgroup>';
                                 ?>
                             </select>
 
