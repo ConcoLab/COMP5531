@@ -151,7 +151,7 @@ $jobs_records->execute();
                             <td><?= $row['job_location'] ?></td>
                             <td><?= $row['job_type'] ?></td>
                             <td><?= $row['job_date_posted'] ?></td>
-                            <td><?= $row['job_date_posted'] ?></td>
+                            <td><?= $row['job_status'] ?></td>
                             <td><?= $row['accepted_count'] ?></td>
                             <td>
                                 <?php

@@ -7,6 +7,8 @@ if (!isset($_SESSION['is_employer']) && !$_SESSION['is_employer']) {
   header('Location: ../../login.php');
 }
 
+$message = '';
+
 if(!empty($_POST['id'])){
     $sql = $conn->prepare("DELETE FROM gxc55311.z_payment_methods WHERE payment_method_id = :payment_method_id");
     $payment_method_id = $_POST['id'];
@@ -14,9 +16,9 @@ if(!empty($_POST['id'])){
 
 
     if ($sql->execute()) {
-      echo "Record deleted successfully";
+      $message = "Record deleted successfully";
       header("Location: .");
     } else {
-      echo "Error deleting record: ";
+      $message = "Error deleting record: ";
     }
 }

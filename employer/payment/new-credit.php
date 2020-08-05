@@ -22,7 +22,6 @@ if (!empty($_POST['holderName'])
 
     if ($stmt->execute()) {
         $last_id = $conn->lastInsertId();
-        echo $last_id;
         $stmt = $conn->prepare('INSERT INTO gxc55311.z_credit_cards
         (cc_payment_method_id, cc_number, cc_type, cc_holder_name, cc_expiration_date, cc_cvv)
         VALUES(:cc_payment_method_id, :cc_number, :cc_type, :cc_holder_name, :cc_expiration_date, :cc_cvv)');
@@ -43,10 +42,7 @@ if (!empty($_POST['holderName'])
     }
 }
 
-?>
-
-
-<?php require_once '../../partials/head-employer.php' ?>
+require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
     <h1>
