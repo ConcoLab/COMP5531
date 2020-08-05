@@ -25,7 +25,7 @@ $can_apply = False;
 
 if($_SESSION["candidate_category"] == "Gold"){
     $can_apply = True;
-} else if($_SESSION["candidate_category"] == "Prime" && $applied_count->fetchColumn() < 1){
+} else if($_SESSION["candidate_category"] == "Prime" && $applied_count->fetchColumn() < 5){
     $can_apply = True;
 } else {
     $can_apply = False;
