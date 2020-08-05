@@ -18,9 +18,6 @@ if($status != "Active"){
     header("Location: .?msg=$message");
 }
 
-?>
-
-<?php
 $employer_category = "";
 $employer_jobs = 0;
 
@@ -49,9 +46,7 @@ $stmt_category = $conn->prepare('SELECT employer_category, COUNT(job_id) as jobs
         $message = "Error: Prime members can post up to 5 jobs!";
         header("Location: .?msg=$message");
     }
-?>
 
-<?php
 $message = '';
 $job_status = 'Active';
 $job_success = False;
@@ -100,9 +95,6 @@ if (!empty($_POST['title'])
             $message = 'Error: All fields are required!';
     }
 
-?>
-
-<?php
 $employer_id = $_SESSION['user_id'];
     $categories = $conn->prepare('SELECT job_category_id, job_category_name
                             FROM gxc55311.z_job_categories
@@ -110,10 +102,7 @@ $employer_id = $_SESSION['user_id'];
     $categories->bindParam(':employer_id', $employer_id);
     $categories->execute();
 
-?>
-
-
-<?php require_once '../../partials/head-employer.php' ?>
+require_once '../../partials/head-employer.php' ?>
 
 <div class="container">
     <h1>
