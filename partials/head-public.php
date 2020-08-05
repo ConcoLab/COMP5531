@@ -37,7 +37,7 @@
           <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) { ?>
 
             <li class="nav-item">
-              <a class="nav-link" href="./candidate/login.php">Admin</a>
+              <a class="nav-link" href="../../candidate/login.php">Admin</a>
             </li>
           <?php } ?>
 
