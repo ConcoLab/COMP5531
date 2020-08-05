@@ -29,9 +29,6 @@ if (!empty($_POST['jobId'])) {
     }
 }
 
-echo $message = 'Sorry, entered values are not correct.';
-echo $_SESSION['user_id'];
-echo date('Y-m-d');
-echo $_POST['jobId'];
+$message = 'Sorry, entered values are not correct.';
 
 ?>

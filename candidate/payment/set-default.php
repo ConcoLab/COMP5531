@@ -26,7 +26,7 @@ if ($cc_def_set->execute()) {
         header("Location: .");
     } else {
         $message = 'Sorry, entered values are not correct.';
-        echo 'aaaa';
+        header("Location: .");
     }
 
 ?>
