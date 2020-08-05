@@ -9,11 +9,11 @@ if(isset($_SESSION["is_candidate"]) && $_SESSION["is_candidate"]){
   header("Location: ./admin");
 }
 ?>
-<!--
+
 <div class="container">
   <div class="row">
     <?php if (isset($_SESSION['user_id'])) { ?>
-      <?php if (isset($_SESSION['is_candidate']) && $_SESSION['is_candidate']) { ?>
+      <!-- <?php if (isset($_SESSION['is_candidate']) && $_SESSION['is_candidate']) { ?>
         <div class="col-12 alert alert-success">
           <h2>
             Candidate
@@ -68,7 +68,7 @@ if(isset($_SESSION["is_candidate"]) && $_SESSION["is_candidate"]){
           </p>
           <a class="btn btn-dark" href="./admin/">Admin Panel</a>
         </div>
-      <?php } ?>
+      <?php } ?> -->
 
     <?php } else { ?>
       <div class="col-12 alert alert-dark">
@@ -95,4 +95,4 @@ if(isset($_SESSION["is_candidate"]) && $_SESSION["is_candidate"]){
 </div>
 
 
-<?php require_once './partials/foot.php' ?> -->
+<?php require_once './partials/foot.php' ?>
