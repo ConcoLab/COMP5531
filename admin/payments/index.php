@@ -20,7 +20,7 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
             <div class="alert alert-success">
                 <h2>Candidates Payments</h2>
                 <p>
-                    By clicking the following button the MESSAGE
+                    By clicking the following button the you will updated users payment and balance manually.
                 </p>
                 <a href="./candidate-update.php" class="btn btn-primary">
                     Update Balance
@@ -36,7 +36,7 @@ if (!isset($_SESSION['is_admin']) && !$_SESSION['is_admin']) {
             <div class="alert alert-info">
                 <h2>Employers Payments</h2>
                 <p>
-                    By clicking the following button the MESSAGE
+                    By clicking the following button the you will updated users payment and balance manually.
                 </p>
                 <a href="./employer-update.php" class="btn btn-primary">
                     Update Balance
